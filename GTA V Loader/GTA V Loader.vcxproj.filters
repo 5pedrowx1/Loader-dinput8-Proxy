@@ -1,0 +1,1683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Arquivos de Origem">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Recurso">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\crow">
+      <UniqueIdentifier>{19fb6cd9-06ba-46e5-8be0-d15d28d73fe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\crow\middlewares">
+      <UniqueIdentifier>{e684ed60-6fb7-4d80-8592-002e3db4d2cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio">
+      <UniqueIdentifier>{dd2f6140-e46c-4376-957e-793a0b1dbf17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\detail">
+      <UniqueIdentifier>{5d829618-6346-4f4c-8f5a-1a364af19e6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\execution">
+      <UniqueIdentifier>{f86753c0-4ca7-4067-8281-c4208cd5f3ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\experimental">
+      <UniqueIdentifier>{29be02a4-b752-4500-8e0b-7073ea3213e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\generic">
+      <UniqueIdentifier>{eb017bfc-0c4d-4364-82aa-6814f2fb7917}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\impl">
+      <UniqueIdentifier>{cbb97e5d-7e10-45ca-8cd5-b316a31991d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ip">
+      <UniqueIdentifier>{6036b9c7-dead-4904-b461-13a17fd86620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\local">
+      <UniqueIdentifier>{e3343424-1b6b-4c7d-adbb-a9aa0f6b3898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\posix">
+      <UniqueIdentifier>{cf4ad09d-1922-4846-b280-3557936eae72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ssl">
+      <UniqueIdentifier>{a0e004d9-4147-4619-9852-515805e68e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\traits">
+      <UniqueIdentifier>{24663feb-d321-4cf5-b2de-b132cc3714a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ts">
+      <UniqueIdentifier>{e3bf5e21-d764-4d52-8618-7aa25a9687f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\windows">
+      <UniqueIdentifier>{248f82fb-3616-40f8-8d58-1a2edbdfb4d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\detail\impl">
+      <UniqueIdentifier>{a37969d5-3db8-4eb8-95d0-85804c229338}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\execution\impl">
+      <UniqueIdentifier>{c3d85d67-5b9e-49d0-b010-c1f42065062e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\experimental\impl">
+      <UniqueIdentifier>{6c59beb7-3c4d-4b5a-ae9a-f7176f2185c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\experimental\detail">
+      <UniqueIdentifier>{557d7bb9-9eb1-4cff-89ea-23414ba82ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\experimental\detail\impl">
+      <UniqueIdentifier>{d093c4f9-92fa-497d-89dc-1e3c411c07ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\generic\detail">
+      <UniqueIdentifier>{e4cd33de-6555-404c-897c-5d5e0525fd60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\generic\detail\impl">
+      <UniqueIdentifier>{25ec4ef8-c3ed-431b-b2b6-88d7d2103a75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ip\detail">
+      <UniqueIdentifier>{c2b33e9e-66b3-4df3-8a6e-fafdbdb8a3a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ip\impl">
+      <UniqueIdentifier>{a8d5fad7-b25c-4afe-9bc1-e489f4a0542a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ip\detail\impl">
+      <UniqueIdentifier>{3db6794a-13dd-4415-90a7-8b1e0186f715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\local\detail">
+      <UniqueIdentifier>{60e83f65-9b4d-4b2c-be2a-537f5e03a218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\local\detail\impl">
+      <UniqueIdentifier>{e5ae5d9f-e793-4a4d-affa-b22c69964756}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ssl\impl">
+      <UniqueIdentifier>{f17d80ef-4a65-4146-bca3-9f68e69e140b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ssl\detail">
+      <UniqueIdentifier>{3902ba99-57d2-4b12-8713-726e9984e15d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\asio\ssl\detail\impl">
+      <UniqueIdentifier>{71ccc36d-7946-4324-b145-d9a773c65f78}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="crow.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\app.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\ci_map.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\common.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\compression.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\exceptions.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\http_connection.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\http_parser_merged.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\http_request.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\http_response.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\http_server.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\json.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\logging.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\middleware.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\middleware_context.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\mime_types.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\multipart.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\multipart_view.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\mustache.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\parser.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\query_string.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\returnable.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\routing.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\settings.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\socket_acceptors.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\socket_adaptors.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\task_timer.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\TinySHA1.hpp">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\utility.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\version.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\websocket.h">
+      <Filter>Arquivos de Cabeçalho\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\middlewares\cookie_parser.h">
+      <Filter>Arquivos de Cabeçalho\crow\middlewares</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\middlewares\cors.h">
+      <Filter>Arquivos de Cabeçalho\crow\middlewares</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\middlewares\session.h">
+      <Filter>Arquivos de Cabeçalho\crow\middlewares</Filter>
+    </ClInclude>
+    <ClInclude Include="crow\middlewares\utf-8.h">
+      <Filter>Arquivos de Cabeçalho\crow\middlewares</Filter>
+    </ClInclude>
+    <ClInclude Include="asio.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\any_completion_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\any_completion_handler.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\any_io_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\append.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\as_tuple.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\associated_allocator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\associated_cancellation_slot.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\associated_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\associated_immediate_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\associator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\async_result.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\awaitable.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_datagram_socket.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_deadline_timer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_file.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_io_object.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_random_access_file.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_raw_socket.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_readable_pipe.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_seq_packet_socket.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_serial_port.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_signal_set.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_socket.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_socket_acceptor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_socket_iostream.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_socket_streambuf.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_stream_file.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_stream_socket.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_streambuf.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_streambuf_fwd.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_waitable_timer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\basic_writable_pipe.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\bind_allocator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\bind_cancellation_slot.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\bind_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\bind_immediate_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffer_registration.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffered_read_stream.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffered_read_stream_fwd.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffered_stream.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffered_stream_fwd.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffered_write_stream.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffered_write_stream_fwd.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\buffers_iterator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\cancel_after.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\cancel_at.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\cancellation_signal.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\cancellation_state.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\cancellation_type.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\co_composed.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\co_spawn.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\completion_condition.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\compose.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\composed.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\config.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\connect.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\connect_pipe.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\consign.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\coroutine.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\deadline_timer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\default_completion_token.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\defer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\deferred.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detached.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\dispatch.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\disposition.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\error.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\error_code.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\executor_work_guard.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\file_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\handler_continuation_hook.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\high_resolution_timer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\immediate.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\io_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\io_context_strand.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\is_applicable_property.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\is_contiguous_iterator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\is_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\is_read_buffered.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\is_write_buffered.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\multiple_exceptions.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\packaged_task.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\placeholders.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\post.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\prefer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\prepend.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\query.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\random_access_file.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\read.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\read_at.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\read_until.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\readable_pipe.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\recycling_allocator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\redirect_error.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\registered_buffer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\require.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\require_concept.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\serial_port.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\serial_port_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\signal_set.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\signal_set_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\socket_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\spawn.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\static_thread_pool.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\steady_timer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\strand.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\stream_file.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\streambuf.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\system_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\system_error.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\system_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\system_timer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\this_coro.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\thread.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\thread_pool.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\time_traits.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\unyield.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\use_awaitable.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\use_future.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\uses_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\version.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\wait_traits.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\writable_pipe.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\write.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\write_at.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\yield.hpp">
+      <Filter>Arquivos de Cabeçalho\asio</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\array.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\array_fwd.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\assert.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\atomic_count.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\base_from_cancellation_state.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\base_from_completion_cond.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\bind_handler.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\blocking_executor_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\buffer_resize_guard.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\buffer_sequence_adapter.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\buffered_stream_storage.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\call_stack.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\chrono.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\chrono_time_traits.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\completion_handler.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\completion_message.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\completion_payload.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\completion_payload_handler.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\composed_work.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\concurrency_hint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\conditionally_enabled_event.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\conditionally_enabled_mutex.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\config.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\consuming_buffers.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\cstddef.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\cstdint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\date_time_fwd.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\deadline_timer_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\dependent_type.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\descriptor_ops.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\descriptor_read_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\descriptor_write_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\dev_poll_reactor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\epoll_reactor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\event.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\eventfd_select_interrupter.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\exception.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\executor_function.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\executor_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\fd_set_adapter.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\fenced_block.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\functional.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\future.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\global.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\handler_alloc_helpers.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\handler_cont_helpers.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\handler_tracking.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\handler_type_requirements.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\handler_work.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\hash_map.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\initiate_defer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\initiate_dispatch.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\initiate_post.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\initiation_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_control.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_object_impl.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_descriptor_read_at_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_descriptor_read_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_descriptor_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_descriptor_write_at_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_descriptor_write_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_file_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_null_buffers_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_operation.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_accept_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_connect_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_recv_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_recvfrom_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_recvmsg_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_send_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_sendto_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_socket_service_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\io_uring_wait_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\is_buffer_sequence.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\is_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\keyword_tss_ptr.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\kqueue_reactor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\limits.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\local_free_on_block_exit.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\memory.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\mutex.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\buffer_sequence_adapter.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\descriptor_ops.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\dev_poll_reactor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\dev_poll_reactor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\epoll_reactor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\epoll_reactor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\eventfd_select_interrupter.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\handler_tracking.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\io_uring_descriptor_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\io_uring_file_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\io_uring_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\io_uring_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\io_uring_socket_service_base.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\kqueue_reactor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\kqueue_reactor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\null_event.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\pipe_select_interrupter.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\posix_event.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\posix_mutex.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\posix_serial_port_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\posix_thread.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\posix_tss_ptr.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\reactive_descriptor_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\reactive_socket_service_base.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\resolver_service_base.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\resolver_thread_pool.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\scheduler.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\select_reactor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\select_reactor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\service_registry.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\service_registry.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\signal_set_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\socket_ops.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\socket_select_interrupter.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\strand_executor_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\strand_executor_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\strand_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\strand_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\thread_context.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\throw_error.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\timer_queue_set.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_event.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_iocp_file_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_iocp_handle_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_iocp_io_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_iocp_io_context.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_iocp_serial_port_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_iocp_socket_service_base.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_mutex.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_object_handle_service.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_static_mutex.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_thread.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\win_tss_ptr.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\winrt_ssocket_service_base.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\winrt_timer_scheduler.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\winrt_timer_scheduler.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\detail\impl\winsock_init.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\allocator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\any_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\bad_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\blocking.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\blocking_adaptation.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\context_as.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\invocable_archetype.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\mapping.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\occupancy.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\outstanding_work.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\prefer_only.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\relationship.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\execution\impl\bad_executor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\execution\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\as_single.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\awaitable_operators.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\basic_channel.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\basic_concurrent_channel.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\cancellation_condition.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\channel.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\channel_error.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\channel_traits.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\co_composed.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\co_spawn.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\concurrent_channel.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\coro.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\coro_traits.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\parallel_group.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\promise.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\use_coro.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\use_promise.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\impl\as_single.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\impl\channel_error.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\impl\coro.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\impl\parallel_group.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\impl\promise.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\impl\use_coro.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\impl\use_promise.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\channel_operation.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\channel_receive_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\channel_send_functions.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\channel_send_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\channel_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\coro_completion_handler.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\coro_promise_allocator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\has_signature.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\partial_promise.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\experimental\detail\impl\channel_service.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\experimental\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\generic\basic_endpoint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\generic\datagram_protocol.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\generic\raw_protocol.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\generic\seq_packet_protocol.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\generic\stream_protocol.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\generic\detail\endpoint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\generic\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\generic\detail\impl\endpoint.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\generic\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\any_completion_executor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\any_io_executor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\append.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\as_tuple.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\awaitable.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\awaitable.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\buffered_read_stream.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\buffered_write_stream.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\cancel_after.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\cancel_at.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\cancellation_signal.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\co_spawn.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\config.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\config.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\connect.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\connect_pipe.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\connect_pipe.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\consign.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\deferred.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\detached.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\error.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\error_code.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\execution_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\execution_context.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\executor.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\io_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\io_context.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\multiple_exceptions.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\prepend.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\read.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\read_at.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\read_until.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\redirect_error.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\serial_port_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\serial_port_base.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\spawn.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\src.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\system_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\system_context.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\system_executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\thread_pool.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\thread_pool.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\use_awaitable.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\use_future.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\write.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\impl\write_at.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\address.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\address_v4.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\address_v4_iterator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\address_v4_range.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\address_v6.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\address_v6_iterator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\address_v6_range.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\bad_address_cast.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\basic_endpoint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\basic_resolver.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\basic_resolver_entry.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\basic_resolver_iterator.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\basic_resolver_query.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\basic_resolver_results.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\host_name.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\icmp.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\multicast.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\network_v4.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\network_v6.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\resolver_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\resolver_query_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\tcp.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\udp.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\unicast.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\v6_only.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\detail\endpoint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\detail\socket_option.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\detail\impl\endpoint.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\address.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\address.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\address_v4.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\address_v4.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\address_v6.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\address_v6.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\basic_endpoint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\host_name.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\network_v4.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\network_v4.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\network_v6.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ip\impl\network_v6.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ip\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\local\basic_endpoint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\local</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\local\connect_pair.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\local</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\local\datagram_protocol.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\local</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\local\seq_packet_protocol.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\local</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\local\stream_protocol.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\local</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\local\detail\endpoint.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\local\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\local\detail\impl\endpoint.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\local\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\basic_object_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\basic_overlapped_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\basic_random_access_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\basic_stream_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\object_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\overlapped_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\overlapped_ptr.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\random_access_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\windows\stream_handle.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\buffer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\executor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\internet.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\io_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\net.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\netfwd.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\socket.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ts\timer.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ts</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\equality_comparable.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\execute_member.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\prefer_free.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\prefer_member.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\query_free.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\query_member.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\query_static_constexpr_member.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\require_concept_free.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\require_concept_member.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\require_free.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\require_member.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\static_query.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\static_require.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\traits\static_require_concept.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\context_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\error.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\host_name_verification.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\stream.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\stream_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\verify_context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\verify_mode.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\impl\context.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\impl\context.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\impl\error.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\impl\host_name_verification.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\impl\src.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\buffered_handshake_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\engine.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\handshake_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\io.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\openssl_init.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\openssl_types.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\password_callback.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\read_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\shutdown_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\stream_core.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\verify_callback.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\write_op.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\impl\engine.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\ssl\detail\impl\openssl_init.ipp">
+      <Filter>Arquivos de Cabeçalho\asio\ssl\detail\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\posix\basic_descriptor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\posix</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\posix\basic_stream_descriptor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\posix</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\posix\descriptor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\posix</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\posix\descriptor_base.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\posix</Filter>
+    </ClInclude>
+    <ClInclude Include="asio\posix\stream_descriptor.hpp">
+      <Filter>Arquivos de Cabeçalho\asio\posix</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dinput8.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dinput8_config.ini" />
+  </ItemGroup>
+</Project>
