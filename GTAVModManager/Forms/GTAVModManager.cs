@@ -323,7 +323,7 @@ namespace GTAVModManager.Forms
             }
         }
 
-        protected void OnFormClosing(FormClosingEventArgs e)
+        private void GTAVModManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             refreshTimer?.Stop();
             refreshTimer?.Dispose();
@@ -333,8 +333,6 @@ namespace GTAVModManager.Forms
                 pipeClient.Close();
                 pipeClient.Dispose();
             }
-
-            base.OnFormClosing(e);
         }
     }
 }
