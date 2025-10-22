@@ -1,65 +1,18 @@
-#pragma once
-
 #include "pch.h"
-#include "Core.cpp"
-#include <thread>
-#include <psapi.h>
-#include "Logger.cpp"
+#include "PerformanceMonitor.h"
+#include "Logger.h"
 
-class PerformanceMonitor {
-public:
-    static PerformanceMonitor& Instance() {
-        static PerformanceMonitor instance;
-        return instance;
-    }
+PerformanceMonitor& PerformanceMonitor::Instance() {
+    static PerformanceMonitor instance;
+    return instance;
+}
 
-    void Start();
-    void Stop();
-    void Update();
-
-    PerformanceMetrics GetMetrics() const;
-    std::string SerializeMetricsJSON() const;
-
-    class ScopedTimer {
-    public:
-        ScopedTimer(const std::string& modId);
-        ~ScopedTimer();
-    private:
-        std::string m_ModId;
-        std::chrono::high_resolution_clock::time_point m_Start;
-    };
-
-private:
-    PerformanceMonitor() = default;
-    ~PerformanceMonitor() { Stop(); }
-    PerformanceMonitor(const PerformanceMonitor&) = delete;
-    PerformanceMonitor& operator=(const PerformanceMonitor&) = delete;
-
-    void MonitorThread();
-    void UpdateMemoryMetrics();
-    void UpdateCPUMetrics();
-    void UpdateThreadMetrics();
-    void UpdateModMetrics();
-
-    size_t GetProcessMemoryUsage();
-    double CalculateCPUUsage();
-
-    std::thread m_MonitorThread;
-    std::atomic<bool> m_Running{ false };
-
-    ULONGLONG m_LastCPU = 0;
-    ULONGLONG m_LastSysCPU = 0;
-    ULONGLONG m_LastUserCPU = 0;
-    HANDLE m_ProcessHandle = nullptr;
-    int m_NumProcessors = 0;
-};
-
-inline PerformanceMonitor::ScopedTimer::ScopedTimer(const std::string& modId)
+PerformanceMonitor::ScopedTimer::ScopedTimer(const std::string& modId)
     : m_ModId(modId)
     , m_Start(std::chrono::high_resolution_clock::now()) {
 }
 
-inline PerformanceMonitor::ScopedTimer::~ScopedTimer() {
+PerformanceMonitor::ScopedTimer::~ScopedTimer() {
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - m_Start);
 
@@ -73,7 +26,7 @@ inline PerformanceMonitor::ScopedTimer::~ScopedTimer() {
     }
 }
 
-inline void PerformanceMonitor::Start() {
+void PerformanceMonitor::Start() {
     if (m_Running) return;
 
     m_Running = true;
@@ -106,7 +59,7 @@ inline void PerformanceMonitor::Start() {
     LOG_INFO("Performance monitor started");
 }
 
-inline void PerformanceMonitor::Stop() {
+void PerformanceMonitor::Stop() {
     if (!m_Running) return;
 
     m_Running = false;
@@ -116,7 +69,13 @@ inline void PerformanceMonitor::Stop() {
     LOG_INFO("Performance monitor stopped");
 }
 
-inline void PerformanceMonitor::MonitorThread() {
+PerformanceMonitor::PerformanceMonitor() = default;
+
+PerformanceMonitor::~PerformanceMonitor() {
+    Stop();
+}
+
+void PerformanceMonitor::MonitorThread() {
     while (m_Running && !Globals::g_ShuttingDown) {
         Update();
 
@@ -127,7 +86,7 @@ inline void PerformanceMonitor::MonitorThread() {
     }
 }
 
-inline void PerformanceMonitor::Update() {
+void PerformanceMonitor::Update() {
     UpdateMemoryMetrics();
     UpdateCPUMetrics();
     UpdateThreadMetrics();
@@ -142,7 +101,7 @@ inline void PerformanceMonitor::Update() {
     Globals::g_PerfMetrics.totalModsLoaded = Globals::g_LoadedMods.size();
 }
 
-inline void PerformanceMonitor::UpdateMemoryMetrics() {
+void PerformanceMonitor::UpdateMemoryMetrics() {
     PROCESS_MEMORY_COUNTERS_EX pmc;
     if (GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc))) {
         std::lock_guard<std::mutex> lock(Globals::g_PerfMutex);
@@ -154,7 +113,7 @@ inline void PerformanceMonitor::UpdateMemoryMetrics() {
     }
 }
 
-inline void PerformanceMonitor::UpdateCPUMetrics() {
+void PerformanceMonitor::UpdateCPUMetrics() {
     FILETIME ftime, fsys, fuser;
 
     GetSystemTimeAsFileTime(&ftime);
@@ -184,7 +143,7 @@ inline void PerformanceMonitor::UpdateCPUMetrics() {
     m_LastSysCPU = sys.QuadPart;
 }
 
-inline void PerformanceMonitor::UpdateThreadMetrics() {
+void PerformanceMonitor::UpdateThreadMetrics() {
     DWORD threadCount = 0;
     DWORD handleCount = 0;
 
@@ -211,7 +170,7 @@ inline void PerformanceMonitor::UpdateThreadMetrics() {
     Globals::g_PerfMetrics.handleCount = handleCount;
 }
 
-inline void PerformanceMonitor::UpdateModMetrics() {
+void PerformanceMonitor::UpdateModMetrics() {
     std::lock_guard<std::mutex> lock(Globals::g_ModsMutex);
 
     std::string slowestMod;
@@ -232,12 +191,12 @@ inline void PerformanceMonitor::UpdateModMetrics() {
     Globals::g_PerfMetrics.slowestModTime = slowestTime;
 }
 
-inline PerformanceMetrics PerformanceMonitor::GetMetrics() const {
+PerformanceMetrics PerformanceMonitor::GetMetrics() const {
     std::lock_guard<std::mutex> lock(Globals::g_PerfMutex);
     return Globals::g_PerfMetrics;
 }
 
-inline std::string PerformanceMonitor::SerializeMetricsJSON() const {
+std::string PerformanceMonitor::SerializeMetricsJSON() const {
     auto metrics = GetMetrics();
 
     std::ostringstream json;

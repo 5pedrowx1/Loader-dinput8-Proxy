@@ -6,7 +6,7 @@
 #define DIRECTINPUT_VERSION 0x0800
 
 #include <windows.h>
-#include <dinput.h>      
+#include <dinput.h>
 #include <string>
 #include <vector>
 #include <mutex>
@@ -16,15 +16,12 @@
 #include <algorithm>
 #include <sstream>
 #include <fstream>
+#include <iostream>
 #include <iomanip>
 #include <deque>
 #include <unordered_set>
 #include <filesystem>
 #include <tlhelp32.h>
 #include <psapi.h>
-
-extern "C" {
-    HRESULT WINAPI DirectInput8Create(HINSTANCE, DWORD, REFIID, LPVOID*, LPUNKNOWN);
-}
 
 #endif // PCH_H

@@ -1,41 +1,23 @@
-#pragma once
-
 #include "pch.h"
-#include "Core.cpp"
-#include "Logger.cpp"
-#include "ModManager.cpp"
-#include "PerformanceMonitor.cpp"
-#include <thread>
+#include "IPCServer.h"
+#include "Logger.h"
+#include "ModManager.h"
+#include "PerformanceMonitor.h"
 
-class IPCServer {
-public:
-    static IPCServer& Instance() {
-        static IPCServer instance;
-        return instance;
-    }
+IPCServer& IPCServer::Instance() {
+    static IPCServer instance;
+    return instance;
+}
 
-    void Start();
-    void Stop();
-    bool IsRunning() const { return m_Running; }
+IPCServer::~IPCServer() {
+    Stop();
+}
 
-private:
-    IPCServer() = default;
-    ~IPCServer() { Stop(); }
-    IPCServer(const IPCServer&) = delete;
-    IPCServer& operator=(const IPCServer&) = delete;
+bool IPCServer::IsRunning() const {
+    return m_Running;
+}
 
-    void ServerThread();
-    void HandleCommand(const IPCMessage& msg, HANDLE hPipe);
-
-    std::string GetStatusJSON();
-    std::string HandleReloadAll();
-
-    std::thread m_ServerThread;
-    std::atomic<bool> m_Running{ false };
-    HANDLE m_hPipe = INVALID_HANDLE_VALUE;
-};
-
-inline void IPCServer::Start() {
+void IPCServer::Start() {
     if (m_Running) return;
 
     m_Running = true;
@@ -43,7 +25,7 @@ inline void IPCServer::Start() {
     LOG_SUCCESS("IPC Server started on pipe: \\\\.\\pipe\\GTAVModLoader");
 }
 
-inline void IPCServer::Stop() {
+void IPCServer::Stop() {
     if (!m_Running) return;
 
     m_Running = false;
@@ -60,7 +42,7 @@ inline void IPCServer::Stop() {
     LOG_INFO("IPC Server stopped");
 }
 
-inline void IPCServer::ServerThread() {
+void IPCServer::ServerThread() {
     const wchar_t* pipeName = L"\\\\.\\pipe\\GTAVModLoader";
 
     while (m_Running && !Globals::g_ShuttingDown) {
@@ -105,7 +87,7 @@ inline void IPCServer::ServerThread() {
     }
 }
 
-inline void IPCServer::HandleCommand(const IPCMessage& msg, HANDLE hPipe) {
+void IPCServer::HandleCommand(const IPCMessage& msg, HANDLE hPipe) {
     std::string cmd = msg.command;
     std::string data = msg.data;
     std::string response;
@@ -161,7 +143,7 @@ inline void IPCServer::HandleCommand(const IPCMessage& msg, HANDLE hPipe) {
     WriteFile(hPipe, response.c_str(), (DWORD)response.length(), &written, NULL);
 }
 
-inline std::string IPCServer::GetStatusJSON() {
+std::string IPCServer::GetStatusJSON() {
     auto uptime = std::chrono::duration_cast<std::chrono::seconds>(
         std::chrono::steady_clock::now() - Globals::g_StartTime
     ).count();
@@ -179,7 +161,7 @@ inline std::string IPCServer::GetStatusJSON() {
     return json.str();
 }
 
-inline std::string IPCServer::HandleReloadAll() {
+std::string IPCServer::HandleReloadAll() {
     std::vector<std::string> modsToReload;
     std::vector<std::string> modTypes;
     std::vector<std::wstring> modPaths;

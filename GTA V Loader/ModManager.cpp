@@ -1,58 +1,20 @@
-#pragma once
-
 #include "pch.h"
-#include "Core.cpp"
-#include "Logger.cpp"
-#include "PerformanceMonitor.cpp"
-#include <filesystem>
-#include <unordered_set>
+#include "ModManager.h"
+#include "Logger.h"
+#include "PerformanceMonitor.h"
 
-namespace fs = std::filesystem;
+ModManager& ModManager::Instance() {
+    static ModManager instance;
+    return instance;
+}
 
-class ModManager {
-public:
-    static ModManager& Instance() {
-        static ModManager instance;
-        return instance;
-    }
+ModManager::ModManager() = default;
 
-    bool LoadMod(const fs::path& modPath, const std::string& type = "mod");
-    bool UnloadMod(const std::string& modId);
-    bool ReloadMod(const std::string& modId);
+ModManager::~ModManager() {
+    StopModuleScanThread();
+}
 
-    void ScanAndLoadModsFolder();
-    void ScanScriptsFolder();
-    void ScanLoadedModules();
-
-    void StartModuleScanThread();
-    void StopModuleScanThread();
-
-    std::string SerializeModsJSON() const;
-    const std::vector<ModInfo>& GetLoadedMods() const { return Globals::g_LoadedMods; }
-
-private:
-    ModManager() = default;
-    ~ModManager() { StopModuleScanThread(); }
-    ModManager(const ModManager&) = delete;
-    ModManager& operator=(const ModManager&) = delete;
-
-    bool CallModInitFunction(HMODULE hMod, const std::string& modName);
-    bool CallModCleanupFunction(HMODULE hMod);
-
-    bool IsModuleAlreadyTracked(HMODULE hModule) const;
-    bool IsRelevantModule(const std::wstring& modPath) const;
-    std::string DetermineModType(const std::wstring& modPath) const;
-
-    void ModuleScanThread();
-
-    std::thread m_ScanThread;
-    std::atomic<bool> m_ScanRunning{ false };
-
-    std::unordered_set<std::wstring> m_ScannedModules;
-    std::mutex m_ScanCacheMutex;
-};
-
-inline bool ModManager::LoadMod(const fs::path& modPath, const std::string& type) {
+bool ModManager::LoadMod(const fs::path& modPath, const std::string& type) {
     std::lock_guard<std::mutex> lock(Globals::g_ModsMutex);
 
     std::string modId = Utils::GenerateModID(modPath.wstring());
@@ -89,7 +51,7 @@ inline bool ModManager::LoadMod(const fs::path& modPath, const std::string& type
     return true;
 }
 
-inline bool ModManager::CallModInitFunction(HMODULE hMod, const std::string& modName) {
+bool ModManager::CallModInitFunction(HMODULE hMod, const std::string& modName) {
     const char* initFuncs[] = { "Initialize", "Init", "Startup", "OnLoad" };
 
     for (const char* funcName : initFuncs) {
@@ -110,7 +72,7 @@ inline bool ModManager::CallModInitFunction(HMODULE hMod, const std::string& mod
     return false;
 }
 
-inline bool ModManager::CallModCleanupFunction(HMODULE hMod) {
+bool ModManager::CallModCleanupFunction(HMODULE hMod) {
     const char* cleanupFuncs[] = { "Cleanup", "Shutdown", "OnUnload", "Dispose" };
 
     for (const char* funcName : cleanupFuncs) {
@@ -130,7 +92,7 @@ inline bool ModManager::CallModCleanupFunction(HMODULE hMod) {
     return false;
 }
 
-inline bool ModManager::UnloadMod(const std::string& modId) {
+bool ModManager::UnloadMod(const std::string& modId) {
     std::lock_guard<std::mutex> lock(Globals::g_ModsMutex);
 
     for (auto it = Globals::g_LoadedMods.begin(); it != Globals::g_LoadedMods.end(); ++it) {
@@ -153,7 +115,7 @@ inline bool ModManager::UnloadMod(const std::string& modId) {
     return false;
 }
 
-inline bool ModManager::ReloadMod(const std::string& modId) {
+bool ModManager::ReloadMod(const std::string& modId) {
     std::wstring modPath;
     std::string modType;
 
@@ -183,7 +145,7 @@ inline bool ModManager::ReloadMod(const std::string& modId) {
     return LoadMod(modPath, modType);
 }
 
-inline void ModManager::ScanAndLoadModsFolder() {
+void ModManager::ScanAndLoadModsFolder() {
     if (!fs::exists("mods")) {
         fs::create_directories("mods");
         LOG_INFO("Created mods folder");
@@ -204,7 +166,7 @@ inline void ModManager::ScanAndLoadModsFolder() {
     }
 }
 
-inline void ModManager::ScanScriptsFolder() {
+void ModManager::ScanScriptsFolder() {
     std::wstring scriptsPath = Utils::GetGameDirectory() + L"scripts\\";
 
     if (!Utils::DirectoryExists(scriptsPath.c_str())) {
@@ -237,7 +199,7 @@ inline void ModManager::ScanScriptsFolder() {
     }
 }
 
-inline bool ModManager::IsRelevantModule(const std::wstring& modPath) const {
+bool ModManager::IsRelevantModule(const std::wstring& modPath) const {
     static const std::wstring systemDirs[] = { L"\\windows\\", L"\\system32\\", L"\\syswow64\\" };
     static const std::wstring ignorePrefixes[] = { L"msvc", L"d3d", L"xinput", L"vcruntime" };
 
@@ -259,7 +221,7 @@ inline bool ModManager::IsRelevantModule(const std::wstring& modPath) const {
             lowerPath.find(L".dll") != std::wstring::npos));
 }
 
-inline std::string ModManager::DetermineModType(const std::wstring& modPath) const {
+std::string ModManager::DetermineModType(const std::wstring& modPath) const {
     std::wstring lowerPath = modPath;
     std::transform(lowerPath.begin(), lowerPath.end(), lowerPath.begin(), ::tolower);
 
@@ -272,14 +234,14 @@ inline std::string ModManager::DetermineModType(const std::wstring& modPath) con
     return "external";
 }
 
-inline bool ModManager::IsModuleAlreadyTracked(HMODULE hModule) const {
+bool ModManager::IsModuleAlreadyTracked(HMODULE hModule) const {
     for (const auto& mod : Globals::g_LoadedMods) {
         if (mod.handle == hModule) return true;
     }
     return false;
 }
 
-inline void ModManager::ScanLoadedModules() {
+void ModManager::ScanLoadedModules() {
     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, GetCurrentProcessId());
     if (hSnapshot == INVALID_HANDLE_VALUE) return;
 
@@ -343,7 +305,7 @@ inline void ModManager::ScanLoadedModules() {
     }
 }
 
-inline void ModManager::ModuleScanThread() {
+void ModManager::ModuleScanThread() {
     Sleep(10000);
 
     while (m_ScanRunning && !Globals::g_ShuttingDown) {
@@ -355,7 +317,7 @@ inline void ModManager::ModuleScanThread() {
     }
 }
 
-inline void ModManager::StartModuleScanThread() {
+void ModManager::StartModuleScanThread() {
     if (m_ScanRunning) return;
 
     m_ScanRunning = true;
@@ -363,7 +325,7 @@ inline void ModManager::StartModuleScanThread() {
     LOG_INFO("Module scanner started");
 }
 
-inline void ModManager::StopModuleScanThread() {
+void ModManager::StopModuleScanThread() {
     if (!m_ScanRunning) return;
 
     m_ScanRunning = false;
@@ -373,7 +335,11 @@ inline void ModManager::StopModuleScanThread() {
     LOG_INFO("Module scanner stopped");
 }
 
-inline std::string ModManager::SerializeModsJSON() const {
+const std::vector<ModInfo>& ModManager::GetLoadedMods() const {
+    return Globals::g_LoadedMods;
+}
+
+std::string ModManager::SerializeModsJSON() const {
     std::lock_guard<std::mutex> lock(Globals::g_ModsMutex);
     std::ostringstream json;
     json << "{\"mods\":[";

@@ -103,6 +103,9 @@
     <Filter Include="Arquivos de Cabeçalho\asio\ssl\detail\impl">
       <UniqueIdentifier>{71ccc36d-7946-4324-b145-d9a773c65f78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Cabeçalho\ForDevs">
+      <UniqueIdentifier>{a1ba9513-db76-43e1-be02-5194d3a24c9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -1668,6 +1671,27 @@
     <ClInclude Include="asio\posix\stream_descriptor.hpp">
       <Filter>Arquivos de Cabeçalho\asio\posix</Filter>
     </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="PerformanceMonitor.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="ModManager.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigManager.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="IPCServer.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="ModLoaderClient.h">
+      <Filter>Arquivos de Cabeçalho\ForDevs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dinput8.cpp">
@@ -1698,6 +1722,9 @@
   <ItemGroup>
     <None Include="dinput8.def">
       <Filter>Arquivos de Origem</Filter>
+    </None>
+    <None Include="ModLoaderClient.cs">
+      <Filter>Arquivos de Cabeçalho\ForDevs</Filter>
     </None>
   </ItemGroup>
 </Project>

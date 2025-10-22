@@ -1,37 +1,25 @@
-#pragma once
-
 #include "pch.h"
-#include "Core.cpp"
-#include "Logger.cpp"
+#include "ConfigManager.h"
+#include "Logger.h"
 
-class ConfigManager {
-public:
-    static ConfigManager& Instance() {
-        static ConfigManager instance;
-        return instance;
-    }
+ConfigManager& ConfigManager::Instance() {
+    static ConfigManager instance;
+    return instance;
+}
 
-    void LoadConfig();
-    void SaveConfig();
-    void CreateDefaultConfig();
+const LoaderConfig& ConfigManager::GetConfig() const {
+    return Globals::g_Config;
+}
 
-    const LoaderConfig& GetConfig() const { return Globals::g_Config; }
-    LoaderConfig& GetConfigMutable() { return Globals::g_Config; }
+LoaderConfig& ConfigManager::GetConfigMutable() {
+    return Globals::g_Config;
+}
 
-private:
-    ConfigManager() = default;
-    ~ConfigManager() = default;
-    ConfigManager(const ConfigManager&) = delete;
-    ConfigManager& operator=(const ConfigManager&) = delete;
-
-    std::wstring GetConfigPath() const;
-};
-
-inline std::wstring ConfigManager::GetConfigPath() const {
+std::wstring ConfigManager::GetConfigPath() const {
     return Utils::GetGameDirectory() + L"dinput8_config.ini";
 }
 
-inline void ConfigManager::LoadConfig() {
+void ConfigManager::LoadConfig() {
     std::wstring configPath = GetConfigPath();
 
     try {
@@ -61,7 +49,7 @@ inline void ConfigManager::LoadConfig() {
     }
 }
 
-inline void ConfigManager::SaveConfig() {
+void ConfigManager::SaveConfig() {
     std::wstring configPath = GetConfigPath();
 
     try {
@@ -99,7 +87,7 @@ inline void ConfigManager::SaveConfig() {
     }
 }
 
-inline void ConfigManager::CreateDefaultConfig() {
+void ConfigManager::CreateDefaultConfig() {
     std::wstring configPath = GetConfigPath();
 
     if (!Utils::FileExists(configPath.c_str())) {

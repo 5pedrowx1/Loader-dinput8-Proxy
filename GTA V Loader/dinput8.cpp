@@ -5,16 +5,15 @@
 // ============================================================================
 
 #include "pch.h"
-
 #include <filesystem>
 #include <thread>
 #include <chrono>
-#include "Core.cpp"
-#include "Logger.cpp"
-#include "PerformanceMonitor.cpp"
-#include "ModManager.cpp"
-#include "ConfigManager.cpp"
-#include "IPCServer.cpp"
+#include "Core.h"
+#include "Logger.h"
+#include "PerformanceMonitor.h"
+#include "ModManager.h"
+#include "ConfigManager.h"
+#include "IPCServer.h"
 
 #pragma comment(lib, "psapi.lib")
 #pragma comment(lib, "mscoree.lib")
