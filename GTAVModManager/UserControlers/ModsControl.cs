@@ -69,5 +69,14 @@ namespace GTAVModManager.UserControlers
             }
             return null;
         }
+
+        public string GetSelectedModType()
+        {
+            if (dgvMods.SelectedRows.Count > 0)
+            {
+                return dgvMods.SelectedRows[0].Cells["colType"].Value?.ToString();
+            }
+            return null;
+        }
     }
 }

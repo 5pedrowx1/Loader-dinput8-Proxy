@@ -664,7 +664,13 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConfigManager.cpp" />
+    <ClCompile Include="Core.cpp" />
     <ClCompile Include="dinput8.cpp" />
+    <ClCompile Include="IPCServer.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="ModManager.cpp" />
+    <ClCompile Include="PerformanceMonitor.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

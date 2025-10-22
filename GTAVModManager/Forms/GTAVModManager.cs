@@ -191,6 +191,18 @@ namespace GTAVModManager.Forms
         public async void UnloadSelectedMod()
         {
             string modId = modsControl.GetSelectedModID();
+            string modType = modsControl.GetSelectedModType();
+
+            if (modType == "scripthook" || modType == "dotnet" || modType == "asi_external")
+            {
+                MessageBox.Show(
+                    "Este tipo de mod não pode ser descarregado.\nReinicie o jogo para descarregar.",
+                    "Operação não permitida",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
 
             if (string.IsNullOrEmpty(modId))
             {
@@ -250,6 +262,20 @@ namespace GTAVModManager.Forms
                     result.StartsWith("SUCCESS") ? MessageBoxIcon.Information : MessageBoxIcon.Error
                 );
             }
+        }
+
+        public async void RescanLoadedModules()
+        {
+            string result = await SendCommand("RESCAN_LOADED");
+            await Task.Delay(1000);
+            await RefreshData();
+
+            MessageBox.Show(
+                "Módulos externos escaneados!",
+                "Sucesso",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         private void GTAVModManager_KeyDown(object sender, KeyEventArgs e)
