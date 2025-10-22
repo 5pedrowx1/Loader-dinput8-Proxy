@@ -409,6 +409,12 @@ void LoadScriptHookModules() {
 
     bool dotnetLoaded = false;
 
+    if (g_Config.loadScriptHookV) {
+        if (LoadModule(L"ScriptHookV.dll", "scripthook")) {
+            LogMessage("ScriptHookV carregado!", "SUCCESS");
+        }
+    }
+
     if (g_Config.loadScriptHookVDotNet) {
         if (LoadModule(L"ScriptHookVDotNet.asi", "dotnet")) {
             LogMessage("ScriptHookVDotNet carregado!", "SUCCESS");
