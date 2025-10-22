@@ -1,13 +1,30 @@
-// pch.h: esse é um arquivo de cabeçalho pré-compilado.
-// Os arquivos listados a seguir são compilados somente uma vez, melhorando o desempenho dos builds futuros.
-// Isso também afeta o desempenho do IntelliSense, incluindo a conclusão de código e muitos recursos de navegação de código.
-// No entanto, os arquivos listados aqui serão TODOS recompilados se qualquer um deles for atualizado entre builds.
-// Não adicione aqui arquivos que você atualizará com frequência, pois isso anula a vantagem de desempenho.
-
 #ifndef PCH_H
 #define PCH_H
 
-// adicione os cabeçalhos que você deseja pré-compilar aqui
-#include "framework.h"
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#define DIRECTINPUT_VERSION 0x0800
 
-#endif //PCH_H
+#include <windows.h>
+#include <dinput.h>      
+#include <string>
+#include <vector>
+#include <mutex>
+#include <atomic>
+#include <chrono>
+#include <thread>
+#include <algorithm>
+#include <sstream>
+#include <fstream>
+#include <iomanip>
+#include <deque>
+#include <unordered_set>
+#include <filesystem>
+#include <tlhelp32.h>
+#include <psapi.h>
+
+extern "C" {
+    HRESULT WINAPI DirectInput8Create(HINSTANCE, DWORD, REFIID, LPVOID*, LPUNKNOWN);
+}
+
+#endif // PCH_H

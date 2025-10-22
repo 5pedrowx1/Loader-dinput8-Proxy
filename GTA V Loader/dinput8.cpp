@@ -6,9 +6,6 @@
 
 #include "pch.h"
 
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <windows.h>
 #include <filesystem>
 #include <thread>
 #include <chrono>
@@ -21,6 +18,8 @@
 
 #pragma comment(lib, "psapi.lib")
 #pragma comment(lib, "mscoree.lib")
+#pragma comment(lib, "dinput8.lib")
+#pragma comment(lib, "dxguid.lib")
 
 namespace fs = std::filesystem;
 static HMODULE g_hOriginalDInput = nullptr;
@@ -41,8 +40,9 @@ void LoadOriginalDInput() {
     }
 }
 
-extern "C" __declspec(dllexport)
-HRESULT WINAPI DirectInput8Create(
+typedef HRESULT(WINAPI* DirectInput8CreateFunc)(HINSTANCE, DWORD, REFIID, LPVOID*, LPUNKNOWN);
+
+extern "C" HRESULT WINAPI DirectInput8Create(
     HINSTANCE hinst,
     DWORD dwVersion,
     REFIID riidltf,
@@ -52,35 +52,9 @@ HRESULT WINAPI DirectInput8Create(
     LoadOriginalDInput();
     if (!g_hOriginalDInput) return E_FAIL;
 
-    typedef HRESULT(WINAPI* DirectInput8CreateFunc)(HINSTANCE, DWORD, REFIID, LPVOID*, LPUNKNOWN);
-    auto pFunc = (DirectInput8CreateFunc)GetProcAddress(g_hOriginalDInput, "DirectInput8Create");
+    DirectInput8CreateFunc pFunc = (DirectInput8CreateFunc)GetProcAddress(g_hOriginalDInput, "DirectInput8Create");
 
     return pFunc ? pFunc(hinst, dwVersion, riidltf, ppvOut, punkOuter) : E_FAIL;
-}
-
-extern "C" __declspec(dllexport) HRESULT WINAPI DllCanUnloadNow() {
-    if (!g_hOriginalDInput) return S_FALSE;
-    auto pFunc = (HRESULT(WINAPI*)())GetProcAddress(g_hOriginalDInput, "DllCanUnloadNow");
-    return pFunc ? pFunc() : S_FALSE;
-}
-
-extern "C" __declspec(dllexport) HRESULT WINAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv) {
-    if (!g_hOriginalDInput) return CLASS_E_CLASSNOTAVAILABLE;
-    auto pFunc = (HRESULT(WINAPI*)(REFCLSID, REFIID, LPVOID*))
-        GetProcAddress(g_hOriginalDInput, "DllGetClassObject");
-    return pFunc ? pFunc(rclsid, riid, ppv) : CLASS_E_CLASSNOTAVAILABLE;
-}
-
-extern "C" __declspec(dllexport) HRESULT WINAPI DllRegisterServer() {
-    if (!g_hOriginalDInput) return E_FAIL;
-    auto pFunc = (HRESULT(WINAPI*)())GetProcAddress(g_hOriginalDInput, "DllRegisterServer");
-    return pFunc ? pFunc() : E_FAIL;
-}
-
-extern "C" __declspec(dllexport) HRESULT WINAPI DllUnregisterServer() {
-    if (!g_hOriginalDInput) return E_FAIL;
-    auto pFunc = (HRESULT(WINAPI*)())GetProcAddress(g_hOriginalDInput, "DllUnregisterServer");
-    return pFunc ? pFunc() : E_FAIL;
 }
 
 class ScriptHookLoader {
@@ -334,13 +308,8 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
     }
 
     case DLL_PROCESS_DETACH:
-    {
-        if (g_hOriginalDInput) {
-            FreeLibrary(g_hOriginalDInput);
-            g_hOriginalDInput = nullptr;
-        }
+        Cleanup();
         break;
-    }
 
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:

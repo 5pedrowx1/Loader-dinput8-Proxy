@@ -147,10 +147,10 @@ inline void PerformanceMonitor::UpdateMemoryMetrics() {
     if (GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc))) {
         std::lock_guard<std::mutex> lock(Globals::g_PerfMutex);
         Globals::g_PerfMetrics.totalMemoryUsage = pmc.WorkingSetSize;
-        Globals::g_PerfMetrics.peakMemoryUsage = std::max(
-            Globals::g_PerfMetrics.peakMemoryUsage,
-            pmc.PeakWorkingSetSize
-        );
+
+        if (pmc.PeakWorkingSetSize > Globals::g_PerfMetrics.peakMemoryUsage) {
+            Globals::g_PerfMetrics.peakMemoryUsage = pmc.PeakWorkingSetSize;
+        }
     }
 }
 
