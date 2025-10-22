@@ -4,7 +4,7 @@
 #include "Core.cpp"
 #include <thread>
 #include <psapi.h>
-#include <Logger.cpp>
+#include "Logger.cpp"
 
 class PerformanceMonitor {
 public:
@@ -47,9 +47,9 @@ private:
     std::thread m_MonitorThread;
     std::atomic<bool> m_Running{ false };
 
-    ULARGE_INTEGER m_LastCPU{ 0 };
-    ULARGE_INTEGER m_LastSysCPU{ 0 };
-    ULARGE_INTEGER m_LastUserCPU{ 0 };
+    ULONGLONG m_LastCPU = 0;
+    ULONGLONG m_LastSysCPU = 0;
+    ULONGLONG m_LastUserCPU = 0;
     HANDLE m_ProcessHandle = nullptr;
     int m_NumProcessors = 0;
 };
@@ -84,12 +84,23 @@ inline void PerformanceMonitor::Start() {
 
     FILETIME ftime, fsys, fuser;
     GetSystemTimeAsFileTime(&ftime);
-    memcpy(&m_LastCPU, &ftime, sizeof(FILETIME));
+
+    ULARGE_INTEGER uliCPU;
+    uliCPU.LowPart = ftime.dwLowDateTime;
+    uliCPU.HighPart = ftime.dwHighDateTime;
+    m_LastCPU = uliCPU.QuadPart;
 
     m_ProcessHandle = GetCurrentProcess();
     GetProcessTimes(m_ProcessHandle, &ftime, &ftime, &fsys, &fuser);
-    memcpy(&m_LastSysCPU, &fsys, sizeof(FILETIME));
-    memcpy(&m_LastUserCPU, &fuser, sizeof(FILETIME));
+
+    ULARGE_INTEGER uliSys, uliUser;
+    uliSys.LowPart = fsys.dwLowDateTime;
+    uliSys.HighPart = fsys.dwHighDateTime;
+    m_LastSysCPU = uliSys.QuadPart;
+
+    uliUser.LowPart = fuser.dwLowDateTime;
+    uliUser.HighPart = fuser.dwHighDateTime;
+    m_LastUserCPU = uliUser.QuadPart;
 
     m_MonitorThread = std::thread(&PerformanceMonitor::MonitorThread, this);
     LOG_INFO("Performance monitor started");
@@ -145,26 +156,32 @@ inline void PerformanceMonitor::UpdateMemoryMetrics() {
 
 inline void PerformanceMonitor::UpdateCPUMetrics() {
     FILETIME ftime, fsys, fuser;
-    ULARGE_INTEGER now, sys, user;
 
     GetSystemTimeAsFileTime(&ftime);
-    memcpy(&now, &ftime, sizeof(FILETIME));
+    ULARGE_INTEGER now;
+    now.LowPart = ftime.dwLowDateTime;
+    now.HighPart = ftime.dwHighDateTime;
 
     GetProcessTimes(m_ProcessHandle, &ftime, &ftime, &fsys, &fuser);
-    memcpy(&sys, &fsys, sizeof(FILETIME));
-    memcpy(&user, &fuser, sizeof(FILETIME));
 
-    double percent = (sys.QuadPart - m_LastSysCPU.QuadPart) +
-        (user.QuadPart - m_LastUserCPU.QuadPart);
-    percent /= (now.QuadPart - m_LastCPU.QuadPart);
+    ULARGE_INTEGER sys, user;
+    sys.LowPart = fsys.dwLowDateTime;
+    sys.HighPart = fsys.dwHighDateTime;
+
+    user.LowPart = fuser.dwLowDateTime;
+    user.HighPart = fuser.dwHighDateTime;
+
+    double percent = static_cast<double>(sys.QuadPart - m_LastSysCPU) +
+        static_cast<double>(user.QuadPart - m_LastUserCPU);
+    percent /= static_cast<double>(now.QuadPart - m_LastCPU);
     percent /= m_NumProcessors;
 
     std::lock_guard<std::mutex> lock(Globals::g_PerfMutex);
     Globals::g_PerfMetrics.cpuUsagePercent = percent * 100.0;
 
-    m_LastCPU = now;
-    m_LastUserCPU = user;
-    m_LastSysCPU = sys;
+    m_LastCPU = now.QuadPart;
+    m_LastUserCPU = user.QuadPart;
+    m_LastSysCPU = sys.QuadPart;
 }
 
 inline void PerformanceMonitor::UpdateThreadMetrics() {

@@ -52,8 +52,8 @@ HRESULT WINAPI DirectInput8Create(
     LoadOriginalDInput();
     if (!g_hOriginalDInput) return E_FAIL;
 
-    auto pFunc = (HRESULT(WINAPI*)(HINSTANCE, DWORD, REFIID, LPVOID*, LPUNKNOWN));
-        GetProcAddress(g_hOriginalDInput, "DirectInput8Create");
+    typedef HRESULT(WINAPI* DirectInput8CreateFunc)(HINSTANCE, DWORD, REFIID, LPVOID*, LPUNKNOWN);
+    auto pFunc = (DirectInput8CreateFunc)GetProcAddress(g_hOriginalDInput, "DirectInput8Create");
 
     return pFunc ? pFunc(hinst, dwVersion, riidltf, ppvOut, punkOuter) : E_FAIL;
 }
@@ -320,6 +320,7 @@ void Cleanup() {
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
     switch (reason) {
     case DLL_PROCESS_ATTACH:
+    {
         DisableThreadLibraryCalls(hModule);
 
         HANDLE hThread = CreateThread(nullptr, 0, InitThread, nullptr, 0, nullptr);
@@ -330,13 +331,16 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
             MessageBoxA(NULL, "Failed to create initialization thread!", "GTA V Mod Loader", MB_ICONERROR);
         }
         break;
+    }
 
     case DLL_PROCESS_DETACH:
+    {
         if (g_hOriginalDInput) {
             FreeLibrary(g_hOriginalDInput);
             g_hOriginalDInput = nullptr;
         }
         break;
+    }
 
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
