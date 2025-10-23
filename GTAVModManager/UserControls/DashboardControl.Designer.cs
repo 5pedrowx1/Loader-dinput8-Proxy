@@ -8,9 +8,7 @@
         {
             if (disposing)
             {
-                updateTimer?.Stop();
-                updateTimer?.Dispose();
-                _client?.Dispose();
+                _currentProcess?.Dispose();
                 components?.Dispose();
             }
             base.Dispose(disposing);
@@ -27,25 +25,25 @@
             components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             lblDashboard = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblStatus = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblUptime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblModsLoaded = new Guna.UI2.WinForms.Guna2HtmlLabel();
             PanelStatus = new Guna.UI2.WinForms.Guna2Panel();
+            lblRAMUsage = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblFPSValue = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            ramUsageBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             lblFPS = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblCPUUsage = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblRAM = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            cpuUsageBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             lblCPU = new Guna.UI2.WinForms.Guna2HtmlLabel();
             statusIndicator = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            cpuUsageBar = new Guna.UI2.WinForms.Guna2ProgressBar();
-            lblCPUUsage = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            ramUsageBar = new Guna.UI2.WinForms.Guna2ProgressBar();
-            lblRAMUsage = new Guna.UI2.WinForms.Guna2HtmlLabel();
             updateTimer = new System.Windows.Forms.Timer(components);
             PanelStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)statusIndicator).BeginInit();
@@ -116,6 +114,17 @@
             PanelStatus.Size = new Size(540, 230);
             PanelStatus.TabIndex = 7;
             // 
+            // lblRAMUsage
+            // 
+            lblRAMUsage.BackColor = Color.Transparent;
+            lblRAMUsage.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblRAMUsage.ForeColor = Color.FromArgb(234, 234, 234);
+            lblRAMUsage.Location = new Point(195, 104);
+            lblRAMUsage.Name = "lblRAMUsage";
+            lblRAMUsage.Size = new Size(78, 17);
+            lblRAMUsage.TabIndex = 13;
+            lblRAMUsage.Text = "2.9 GB / 8 GB";
+            // 
             // lblFPSValue
             // 
             lblFPSValue.BackColor = Color.Transparent;
@@ -126,6 +135,21 @@
             lblFPSValue.Size = new Size(35, 39);
             lblFPSValue.TabIndex = 16;
             lblFPSValue.Text = "60";
+            // 
+            // ramUsageBar
+            // 
+            ramUsageBar.BorderRadius = 6;
+            ramUsageBar.CustomizableEdges = customizableEdges1;
+            ramUsageBar.FillColor = Color.FromArgb(35, 35, 35);
+            ramUsageBar.Location = new Point(25, 109);
+            ramUsageBar.Name = "ramUsageBar";
+            ramUsageBar.ProgressColor = Color.FromArgb(0, 255, 135);
+            ramUsageBar.ProgressColor2 = Color.FromArgb(0, 204, 255);
+            ramUsageBar.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            ramUsageBar.Size = new Size(160, 10);
+            ramUsageBar.TabIndex = 12;
+            ramUsageBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            ramUsageBar.Value = 45;
             // 
             // lblFPS
             // 
@@ -138,6 +162,17 @@
             lblFPS.TabIndex = 15;
             lblFPS.Text = "FPS";
             // 
+            // lblCPUUsage
+            // 
+            lblCPUUsage.BackColor = Color.Transparent;
+            lblCPUUsage.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblCPUUsage.ForeColor = Color.FromArgb(234, 234, 234);
+            lblCPUUsage.Location = new Point(195, 43);
+            lblCPUUsage.Name = "lblCPUUsage";
+            lblCPUUsage.Size = new Size(27, 17);
+            lblCPUUsage.TabIndex = 10;
+            lblCPUUsage.Text = "32%";
+            // 
             // lblRAM
             // 
             lblRAM.BackColor = Color.Transparent;
@@ -148,6 +183,21 @@
             lblRAM.Size = new Size(87, 17);
             lblRAM.TabIndex = 12;
             lblRAM.Text = "Memory Usage";
+            // 
+            // cpuUsageBar
+            // 
+            cpuUsageBar.BorderRadius = 6;
+            cpuUsageBar.CustomizableEdges = customizableEdges3;
+            cpuUsageBar.FillColor = Color.FromArgb(35, 35, 35);
+            cpuUsageBar.Location = new Point(25, 48);
+            cpuUsageBar.Name = "cpuUsageBar";
+            cpuUsageBar.ProgressColor = Color.FromArgb(0, 255, 135);
+            cpuUsageBar.ProgressColor2 = Color.FromArgb(0, 204, 255);
+            cpuUsageBar.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            cpuUsageBar.Size = new Size(160, 10);
+            cpuUsageBar.TabIndex = 9;
+            cpuUsageBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            cpuUsageBar.Value = 32;
             // 
             // lblCPU
             // 
@@ -173,61 +223,10 @@
             statusIndicator.TabIndex = 16;
             statusIndicator.TabStop = false;
             // 
-            // cpuUsageBar
-            // 
-            cpuUsageBar.BorderRadius = 6;
-            cpuUsageBar.CustomizableEdges = customizableEdges3;
-            cpuUsageBar.FillColor = Color.FromArgb(35, 35, 35);
-            cpuUsageBar.Location = new Point(25, 48);
-            cpuUsageBar.Name = "cpuUsageBar";
-            cpuUsageBar.ProgressColor = Color.FromArgb(0, 255, 135);
-            cpuUsageBar.ProgressColor2 = Color.FromArgb(0, 204, 255);
-            cpuUsageBar.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            cpuUsageBar.Size = new Size(160, 10);
-            cpuUsageBar.TabIndex = 9;
-            cpuUsageBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            cpuUsageBar.Value = 32;
-            // 
-            // lblCPUUsage
-            // 
-            lblCPUUsage.BackColor = Color.Transparent;
-            lblCPUUsage.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblCPUUsage.ForeColor = Color.FromArgb(234, 234, 234);
-            lblCPUUsage.Location = new Point(195, 43);
-            lblCPUUsage.Name = "lblCPUUsage";
-            lblCPUUsage.Size = new Size(27, 17);
-            lblCPUUsage.TabIndex = 10;
-            lblCPUUsage.Text = "32%";
-            // 
-            // ramUsageBar
-            // 
-            ramUsageBar.BorderRadius = 6;
-            ramUsageBar.CustomizableEdges = customizableEdges1;
-            ramUsageBar.FillColor = Color.FromArgb(35, 35, 35);
-            ramUsageBar.Location = new Point(25, 109);
-            ramUsageBar.Name = "ramUsageBar";
-            ramUsageBar.ProgressColor = Color.FromArgb(0, 255, 135);
-            ramUsageBar.ProgressColor2 = Color.FromArgb(0, 204, 255);
-            ramUsageBar.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            ramUsageBar.Size = new Size(160, 10);
-            ramUsageBar.TabIndex = 12;
-            ramUsageBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            ramUsageBar.Value = 45;
-            // 
-            // lblRAMUsage
-            // 
-            lblRAMUsage.BackColor = Color.Transparent;
-            lblRAMUsage.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblRAMUsage.ForeColor = Color.FromArgb(234, 234, 234);
-            lblRAMUsage.Location = new Point(195, 104);
-            lblRAMUsage.Name = "lblRAMUsage";
-            lblRAMUsage.Size = new Size(78, 17);
-            lblRAMUsage.TabIndex = 13;
-            lblRAMUsage.Text = "2.9 GB / 8 GB";
-            // 
             // updateTimer
             // 
             updateTimer.Interval = 1500;
+            updateTimer.Tick += updateTimer_Tick_1;
             // 
             // DashboardControl
             // 
@@ -242,6 +241,7 @@
             Controls.Add(lblDashboard);
             Name = "DashboardControl";
             Size = new Size(578, 353);
+            Load += DashboardControl_Load;
             PanelStatus.ResumeLayout(false);
             PanelStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)statusIndicator).EndInit();

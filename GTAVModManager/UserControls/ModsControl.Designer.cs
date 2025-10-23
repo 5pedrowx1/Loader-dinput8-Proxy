@@ -3,7 +3,6 @@
     partial class ModsControl
     {
         private System.ComponentModel.IContainer components = null;
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -11,7 +10,6 @@
                 _refreshTimer?.Stop();
                 _refreshTimer?.Dispose();
                 _client?.Dispose();
-                components?.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -20,6 +18,7 @@
 
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -33,15 +32,16 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             lblMods = new Guna.UI2.WinForms.Guna2HtmlLabel();
             modsTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             btnRemove = new Guna.UI2.WinForms.Guna2Button();
             btnReload = new Guna.UI2.WinForms.Guna2Button();
             lblTotalMods = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelMods = new Guna.UI2.WinForms.Guna2Panel();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            _refreshTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)modsTable).BeginInit();
             SuspendLayout();
             // 
@@ -73,14 +73,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             modsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             modsTable.ColumnHeadersHeight = 30;
-            modsTable.Columns.AddRange(
-                new DataGridViewColumn[]
-                {
-                    dataGridViewTextBoxColumn1,
-                    dataGridViewTextBoxColumn2,
-                    dataGridViewTextBoxColumn3,
-                    dataGridViewTextBoxColumn4
-                });
+            modsTable.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(24, 24, 24);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -90,16 +83,20 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             modsTable.DefaultCellStyle = dataGridViewCellStyle3;
             modsTable.GridColor = Color.FromArgb(42, 42, 42);
-            modsTable.Location = new Point(25, 65);
+            modsTable.Location = new Point(18, 58);
             modsTable.MultiSelect = false;
             modsTable.Name = "modsTable";
             modsTable.ReadOnly = true;
             modsTable.RowHeadersVisible = false;
             modsTable.RowTemplate.Height = 30;
             modsTable.ScrollBars = ScrollBars.Vertical;
-            modsTable.Size = new Size(525, 200);
+            modsTable.Size = new Size(542, 224);
             modsTable.TabIndex = 2;
             modsTable.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            modsTable.ThemeStyle.AlternatingRowsStyle.Font = null;
+            modsTable.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            modsTable.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            modsTable.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
             modsTable.ThemeStyle.BackColor = Color.FromArgb(24, 24, 24);
             modsTable.ThemeStyle.GridColor = Color.FromArgb(42, 42, 42);
             modsTable.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(18, 18, 18);
@@ -116,6 +113,34 @@
             modsTable.ThemeStyle.RowsStyle.Height = 30;
             modsTable.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(0, 255, 135);
             modsTable.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(18, 18, 18);
+            modsTable.CellFormatting += ModsTable_CellFormatting;
+            modsTable.SelectionChanged += ModsTable_SelectionChanged;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            dataGridViewTextBoxColumn1.HeaderText = "Mod Name";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "SizeFormatted";
+            dataGridViewTextBoxColumn2.HeaderText = "Type";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Size";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "Status";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // btnAdd
             // 
@@ -130,6 +155,7 @@
             btnAdd.Size = new Size(110, 30);
             btnAdd.TabIndex = 3;
             btnAdd.Text = "📁 Add Mod";
+            btnAdd.Click += AddMod;
             // 
             // btnRemove
             // 
@@ -144,6 +170,7 @@
             btnRemove.Size = new Size(100, 30);
             btnRemove.TabIndex = 4;
             btnRemove.Text = "🗑️ Remove";
+            btnRemove.Click += RemoveMod;
             // 
             // btnReload
             // 
@@ -158,6 +185,7 @@
             btnReload.Size = new Size(105, 30);
             btnReload.TabIndex = 5;
             btnReload.Text = "🔄 Reload All";
+            btnReload.Click += ReloadAll;
             // 
             // lblTotalMods
             // 
@@ -183,36 +211,10 @@
             panelMods.Size = new Size(548, 230);
             panelMods.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn1
+            // _refreshTimer
             // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            dataGridViewTextBoxColumn1.Name = "colName";
-            dataGridViewTextBoxColumn1.HeaderText = "Mod Name";
-            dataGridViewTextBoxColumn1.Width = 200;
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "Type";
-            dataGridViewTextBoxColumn2.HeaderText = "Type";
-            dataGridViewTextBoxColumn2.Name = "colType";
-            dataGridViewTextBoxColumn2.Width = 100;
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "SizeFormatted";
-            dataGridViewTextBoxColumn3.HeaderText = "Size";
-            dataGridViewTextBoxColumn3.Name = "colSize";
-            dataGridViewTextBoxColumn3.Width = 80;
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Status";
-            dataGridViewTextBoxColumn4.Name = "colStatus";
-            dataGridViewTextBoxColumn4.Width = 100;
-            dataGridViewTextBoxColumn4.ReadOnly = true;
+            _refreshTimer.Interval = 2000;
+            _refreshTimer.Tick += RefreshModsList;
             // 
             // ModsControl
             // 
@@ -228,6 +230,7 @@
             Controls.Add(lblTotalMods);
             Name = "ModsControl";
             Size = new Size(578, 353);
+            Load += ModsControl_Load;
             ((System.ComponentModel.ISupportInitialize)modsTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -246,5 +249,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Timer _refreshTimer;
     }
 }

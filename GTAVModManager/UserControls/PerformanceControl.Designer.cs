@@ -3,8 +3,6 @@
     partial class PerformanceControl
     {
         private System.ComponentModel.IContainer components = null;
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -12,7 +10,6 @@
                 _refreshTimer?.Stop();
                 _refreshTimer?.Dispose();
                 _client?.Dispose();
-                components?.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -21,6 +18,7 @@
 
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
@@ -34,12 +32,13 @@
             lblAvgTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblPeakTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             performanceTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            btnReset = new Guna.UI2.WinForms.Guna2Button();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            btnReset = new Guna.UI2.WinForms.Guna2Button();
+            _refreshTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)performanceTable).BeginInit();
             SuspendLayout();
             // 
@@ -155,20 +154,7 @@
             performanceTable.ThemeStyle.RowsStyle.Height = 30;
             performanceTable.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             performanceTable.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // btnReset
-            // 
-            btnReset.BorderRadius = 6;
-            btnReset.CustomizableEdges = customizableEdges3;
-            btnReset.FillColor = Color.FromArgb(255, 77, 77);
-            btnReset.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnReset.ForeColor = Color.Black;
-            btnReset.Location = new Point(465, 335);
-            btnReset.Name = "btnReset";
-            btnReset.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnReset.Size = new Size(98, 28);
-            btnReset.TabIndex = 6;
-            btnReset.Text = "Reset";
+            performanceTable.CellFormatting += PerformanceTable_CellFormatting;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -192,7 +178,6 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "AvgExecutionMs";
             dataGridViewTextBoxColumn4.HeaderText = "Avg Time (ms)";
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -203,6 +188,26 @@
             dataGridViewTextBoxColumn5.HeaderText = "Type";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // btnReset
+            // 
+            btnReset.BorderRadius = 6;
+            btnReset.CustomizableEdges = customizableEdges3;
+            btnReset.FillColor = Color.FromArgb(255, 77, 77);
+            btnReset.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnReset.ForeColor = Color.Black;
+            btnReset.Location = new Point(465, 335);
+            btnReset.Name = "btnReset";
+            btnReset.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnReset.Size = new Size(98, 28);
+            btnReset.TabIndex = 6;
+            btnReset.Text = "Reset";
+            btnReset.Click += ResetStatistics;
+            // 
+            // _refreshTimer
+            // 
+            _refreshTimer.Interval = 2000;
+            _refreshTimer.Tick += _refreshTimer_Tick;
             // 
             // PerformanceControl
             // 
@@ -218,6 +223,7 @@
             Controls.Add(btnReset);
             Name = "PerformanceControl";
             Size = new Size(578, 380);
+            Load += PerformanceControl_Load;
             ((System.ComponentModel.ISupportInitialize)performanceTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -237,5 +243,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Timer _refreshTimer;
     }
 }

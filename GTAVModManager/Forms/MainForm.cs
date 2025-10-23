@@ -100,5 +100,36 @@ namespace GTAVModManager.Forms
         {
             Application.Exit();
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (settingsControl.HasUnsavedChanges)
+            {
+                var result = MessageBox.Show(
+                    "You have unsaved changes in the settings.\n\n" +
+                    "Do you want to save before closing?",
+                    "Unsaved Changes",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        settingsControl.SaveSettingsSync();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error saving settings:\n\n{ex.Message}",
+                            "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
     }
 }
