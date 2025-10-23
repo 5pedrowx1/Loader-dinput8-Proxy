@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GTAVModManager.Forms
@@ -21,20 +22,24 @@ namespace GTAVModManager.Forms
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Elipse = new Guna.UI2.WinForms.Guna2Elipse(components);
             ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(components);
             DragForm = new Guna.UI2.WinForms.Guna2DragControl(components);
@@ -47,6 +52,8 @@ namespace GTAVModManager.Forms
             lblModManager = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblVersion = new Guna.UI2.WinForms.Guna2HtmlLabel();
             PanelTabs = new Guna.UI2.WinForms.Guna2Panel();
+            BtnMinimize = new Guna.UI2.WinForms.Guna2Button();
+            BtnClose = new Guna.UI2.WinForms.Guna2Button();
             PanelButtons.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,17 +85,17 @@ namespace GTAVModManager.Forms
             PanelButtons.Controls.Add(BtnPerformance);
             PanelButtons.Controls.Add(BtnMods);
             PanelButtons.Controls.Add(BtnDashboard);
-            PanelButtons.CustomizableEdges = customizableEdges13;
+            PanelButtons.CustomizableEdges = customizableEdges17;
             PanelButtons.Location = new Point(22, 70);
             PanelButtons.Name = "PanelButtons";
-            PanelButtons.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            PanelButtons.ShadowDecoration.CustomizableEdges = customizableEdges18;
             PanelButtons.Size = new Size(170, 280);
             PanelButtons.TabIndex = 0;
             // 
             // BtnSettings
             // 
             BtnSettings.BorderRadius = 6;
-            BtnSettings.CustomizableEdges = customizableEdges3;
+            BtnSettings.CustomizableEdges = customizableEdges7;
             BtnSettings.FillColor = Color.FromArgb(35, 35, 35);
             BtnSettings.Font = new Font("Segoe UI Semibold", 9.75F);
             BtnSettings.ForeColor = Color.White;
@@ -96,7 +103,7 @@ namespace GTAVModManager.Forms
             BtnSettings.HoverState.ForeColor = Color.Black;
             BtnSettings.Location = new Point(5, 224);
             BtnSettings.Name = "BtnSettings";
-            BtnSettings.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            BtnSettings.ShadowDecoration.CustomizableEdges = customizableEdges8;
             BtnSettings.Size = new Size(160, 45);
             BtnSettings.TabIndex = 4;
             BtnSettings.Text = "⚙ Settings";
@@ -105,7 +112,7 @@ namespace GTAVModManager.Forms
             // BtnLogs
             // 
             BtnLogs.BorderRadius = 6;
-            BtnLogs.CustomizableEdges = customizableEdges5;
+            BtnLogs.CustomizableEdges = customizableEdges9;
             BtnLogs.FillColor = Color.FromArgb(35, 35, 35);
             BtnLogs.Font = new Font("Segoe UI Semibold", 9.75F);
             BtnLogs.ForeColor = Color.White;
@@ -113,7 +120,7 @@ namespace GTAVModManager.Forms
             BtnLogs.HoverState.ForeColor = Color.Black;
             BtnLogs.Location = new Point(5, 172);
             BtnLogs.Name = "BtnLogs";
-            BtnLogs.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            BtnLogs.ShadowDecoration.CustomizableEdges = customizableEdges10;
             BtnLogs.Size = new Size(160, 45);
             BtnLogs.TabIndex = 3;
             BtnLogs.Text = "\U0001f9fe Logs";
@@ -122,7 +129,7 @@ namespace GTAVModManager.Forms
             // BtnPerformance
             // 
             BtnPerformance.BorderRadius = 6;
-            BtnPerformance.CustomizableEdges = customizableEdges7;
+            BtnPerformance.CustomizableEdges = customizableEdges11;
             BtnPerformance.FillColor = Color.FromArgb(35, 35, 35);
             BtnPerformance.Font = new Font("Segoe UI Semibold", 9.75F);
             BtnPerformance.ForeColor = Color.White;
@@ -130,7 +137,7 @@ namespace GTAVModManager.Forms
             BtnPerformance.HoverState.ForeColor = Color.Black;
             BtnPerformance.Location = new Point(5, 120);
             BtnPerformance.Name = "BtnPerformance";
-            BtnPerformance.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            BtnPerformance.ShadowDecoration.CustomizableEdges = customizableEdges12;
             BtnPerformance.Size = new Size(160, 45);
             BtnPerformance.TabIndex = 2;
             BtnPerformance.Text = "📊 Performance";
@@ -139,7 +146,7 @@ namespace GTAVModManager.Forms
             // BtnMods
             // 
             BtnMods.BorderRadius = 6;
-            BtnMods.CustomizableEdges = customizableEdges9;
+            BtnMods.CustomizableEdges = customizableEdges13;
             BtnMods.FillColor = Color.FromArgb(35, 35, 35);
             BtnMods.Font = new Font("Segoe UI", 9F);
             BtnMods.ForeColor = Color.White;
@@ -147,7 +154,7 @@ namespace GTAVModManager.Forms
             BtnMods.HoverState.ForeColor = Color.Black;
             BtnMods.Location = new Point(5, 68);
             BtnMods.Name = "BtnMods";
-            BtnMods.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            BtnMods.ShadowDecoration.CustomizableEdges = customizableEdges14;
             BtnMods.Size = new Size(160, 45);
             BtnMods.TabIndex = 1;
             BtnMods.Text = "\U0001f9e9 Mods";
@@ -156,7 +163,7 @@ namespace GTAVModManager.Forms
             // BtnDashboard
             // 
             BtnDashboard.BorderRadius = 6;
-            BtnDashboard.CustomizableEdges = customizableEdges11;
+            BtnDashboard.CustomizableEdges = customizableEdges15;
             BtnDashboard.FillColor = Color.FromArgb(35, 35, 35);
             BtnDashboard.Font = new Font("Segoe UI Semibold", 9.75F);
             BtnDashboard.ForeColor = Color.White;
@@ -164,10 +171,10 @@ namespace GTAVModManager.Forms
             BtnDashboard.HoverState.ForeColor = Color.Black;
             BtnDashboard.Location = new Point(5, 16);
             BtnDashboard.Name = "BtnDashboard";
-            BtnDashboard.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            BtnDashboard.ShadowDecoration.CustomizableEdges = customizableEdges16;
             BtnDashboard.Size = new Size(160, 45);
             BtnDashboard.TabIndex = 0;
-            BtnDashboard.Text = "\U0001f9ed Dashboard";
+            BtnDashboard.Text = "📋 Dashboard";
             BtnDashboard.Click += BtnDashboard_Click;
             // 
             // lblModManager
@@ -186,11 +193,11 @@ namespace GTAVModManager.Forms
             lblVersion.BackColor = Color.Transparent;
             lblVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblVersion.ForeColor = Color.FromArgb(120, 120, 120);
-            lblVersion.Location = new Point(743, 30);
+            lblVersion.Location = new Point(84, 421);
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new Size(37, 17);
             lblVersion.TabIndex = 2;
-            lblVersion.Text = "v2.2.0";
+            lblVersion.Text = "v2.1.0";
             // 
             // PanelTabs
             // 
@@ -198,12 +205,46 @@ namespace GTAVModManager.Forms
             PanelTabs.BorderColor = Color.FromArgb(40, 40, 40);
             PanelTabs.BorderRadius = 12;
             PanelTabs.BorderThickness = 1;
-            PanelTabs.CustomizableEdges = customizableEdges1;
+            PanelTabs.CustomizableEdges = customizableEdges5;
             PanelTabs.Location = new Point(210, 70);
             PanelTabs.Name = "PanelTabs";
-            PanelTabs.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            PanelTabs.Size = new Size(570, 350);
+            PanelTabs.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            PanelTabs.Size = new Size(578, 368);
             PanelTabs.TabIndex = 3;
+            // 
+            // BtnMinimize
+            // 
+            BtnMinimize.BorderRadius = 5;
+            BtnMinimize.CustomizableEdges = customizableEdges1;
+            BtnMinimize.FillColor = Color.FromArgb(35, 35, 35);
+            BtnMinimize.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            BtnMinimize.ForeColor = Color.White;
+            BtnMinimize.HoverState.FillColor = Color.FromArgb(0, 255, 135);
+            BtnMinimize.HoverState.ForeColor = Color.Black;
+            BtnMinimize.Location = new Point(720, 15);
+            BtnMinimize.Name = "BtnMinimize";
+            BtnMinimize.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            BtnMinimize.Size = new Size(35, 28);
+            BtnMinimize.TabIndex = 0;
+            BtnMinimize.Text = "–";
+            BtnMinimize.Click += BtnMinimize_Click;
+            // 
+            // BtnClose
+            // 
+            BtnClose.BorderRadius = 5;
+            BtnClose.CustomizableEdges = customizableEdges3;
+            BtnClose.FillColor = Color.FromArgb(35, 35, 35);
+            BtnClose.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            BtnClose.ForeColor = Color.White;
+            BtnClose.HoverState.FillColor = Color.FromArgb(255, 77, 77);
+            BtnClose.HoverState.ForeColor = Color.Black;
+            BtnClose.Location = new Point(760, 15);
+            BtnClose.Name = "BtnClose";
+            BtnClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            BtnClose.Size = new Size(35, 28);
+            BtnClose.TabIndex = 1;
+            BtnClose.Text = "X";
+            BtnClose.Click += BtnClose_Click;
             // 
             // MainForm
             // 
@@ -211,6 +252,8 @@ namespace GTAVModManager.Forms
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 18);
             ClientSize = new Size(800, 450);
+            Controls.Add(BtnMinimize);
+            Controls.Add(BtnClose);
             Controls.Add(lblVersion);
             Controls.Add(lblModManager);
             Controls.Add(PanelTabs);
@@ -237,5 +280,7 @@ namespace GTAVModManager.Forms
         private Guna.UI2.WinForms.Guna2Button BtnPerformance;
         private Guna.UI2.WinForms.Guna2Button BtnLogs;
         private Guna.UI2.WinForms.Guna2Button BtnSettings;
+        private Guna.UI2.WinForms.Guna2Button BtnClose;
+        private Guna.UI2.WinForms.Guna2Button BtnMinimize;
     }
 }
