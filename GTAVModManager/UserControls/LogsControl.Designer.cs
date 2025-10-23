@@ -6,8 +6,13 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-                components.Dispose();
+            if (disposing)
+            {
+                _refreshTimer?.Stop();
+                _refreshTimer?.Dispose();
+                _client?.Dispose();
+                components?.Dispose();
+            }
             base.Dispose(disposing);
         }
 
