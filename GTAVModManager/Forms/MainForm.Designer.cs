@@ -261,6 +261,7 @@ namespace GTAVModManager.Forms
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm";
             Text = "GTAV Mod Manager";
+            FormClosing += MainForm_FormClosing;
             PanelButtons.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

@@ -8,8 +8,12 @@ namespace GTAVModManager.Services
     {
         private const string PipeName = "GTAVModLoader";
         private const int Timeout = 5000;
+        private const int MaxRetries = 3;
+
         private NamedPipeClientStream? _pipeClient;
         private bool _disposed;
+        private readonly object _lock = new object();
+        private int _connectionAttempts = 0;
 
         [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
         private struct IPCMessage
@@ -27,51 +31,134 @@ namespace GTAVModManager.Services
             }
         }
 
-        public bool IsConnected => _pipeClient?.IsConnected ?? false;
+        public bool IsConnected
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    return _pipeClient?.IsConnected ?? false;
+                }
+            }
+        }
 
         public async Task<bool> ConnectAsync()
         {
+            lock (_lock)
+            {
+                if (_disposed)
+                    throw new ObjectDisposedException(nameof(ModLoaderClient));
+
+                if (_pipeClient?.IsConnected == true)
+                    return true;
+
+                _pipeClient?.Dispose();
+                _pipeClient = null;
+            }
+
             try
             {
-                _pipeClient?.Dispose();
-                _pipeClient = new NamedPipeClientStream(".", PipeName, PipeDirection.InOut);
+                var pipe = new NamedPipeClientStream(".", PipeName, PipeDirection.InOut);
 
-                await _pipeClient.ConnectAsync(Timeout);
-                return _pipeClient.IsConnected;
+                await pipe.ConnectAsync(Timeout);
+
+                if (pipe.IsConnected)
+                {
+                    lock (_lock)
+                    {
+                        _pipeClient = pipe;
+                        _connectionAttempts = 0;
+                    }
+                    return true;
+                }
+
+                pipe.Dispose();
+                return false;
             }
-            catch
+            catch (TimeoutException)
             {
+                _connectionAttempts++;
+                return false;
+            }
+            catch (Exception)
+            {
+                _connectionAttempts++;
                 return false;
             }
         }
 
         public async Task<string> SendCommandAsync(string command, string data = "")
         {
-            if (!IsConnected)
+            if (_disposed)
+                throw new ObjectDisposedException(nameof(ModLoaderClient));
+
+            for (int retry = 0; retry < MaxRetries; retry++)
             {
-                if (!await ConnectAsync())
+                if (!IsConnected)
+                {
+                    if (!await ConnectAsync())
+                    {
+                        if (retry == MaxRetries - 1)
+                            return string.Empty;
+
+                        await Task.Delay(500 * (retry + 1));
+                        continue;
+                    }
+                }
+
+                try
+                {
+                    NamedPipeClientStream? pipe;
+                    lock (_lock)
+                    {
+                        pipe = _pipeClient;
+                    }
+
+                    if (pipe == null || !pipe.IsConnected)
+                    {
+                        await ConnectAsync();
+                        continue;
+                    }
+
+                    var msg = new IPCMessage(command, data);
+                    byte[] buffer = StructToBytes(msg);
+
+                    await pipe.WriteAsync(buffer, 0, buffer.Length);
+                    await pipe.FlushAsync();
+
+                    byte[] responseBuffer = new byte[8192];
+                    int bytesRead = await pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
+
+                    return Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
+                }
+                catch (IOException)
+                {
+                    lock (_lock)
+                    {
+                        _pipeClient?.Dispose();
+                        _pipeClient = null;
+                    }
+
+                    if (retry < MaxRetries - 1)
+                    {
+                        await Task.Delay(500 * (retry + 1));
+                        continue;
+                    }
+
                     return string.Empty;
+                }
+                catch (Exception)
+                {
+                    lock (_lock)
+                    {
+                        _pipeClient?.Dispose();
+                        _pipeClient = null;
+                    }
+                    return string.Empty;
+                }
             }
 
-            try
-            {
-                var msg = new IPCMessage(command, data);
-                byte[] buffer = StructToBytes(msg);
-
-                await _pipeClient!.WriteAsync(buffer, 0, buffer.Length);
-                await _pipeClient.FlushAsync();
-
-                byte[] responseBuffer = new byte[8192];
-                int bytesRead = await _pipeClient.ReadAsync(responseBuffer, 0, responseBuffer.Length);
-
-                return Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
-            }
-            catch
-            {
-                _pipeClient?.Dispose();
-                _pipeClient = null;
-                return string.Empty;
-            }
+            return string.Empty;
         }
 
         public Task<string> GetModsAsync() => SendCommandAsync("GET_MODS");
@@ -106,8 +193,20 @@ namespace GTAVModManager.Services
         public void Dispose()
         {
             if (_disposed) return;
-            _disposed = true;
-            _pipeClient?.Dispose();
+
+            lock (_lock)
+            {
+                _disposed = true;
+                _pipeClient?.Dispose();
+                _pipeClient = null;
+            }
+
+            GC.SuppressFinalize(this);
+        }
+
+        ~ModLoaderClient()
+        {
+            Dispose();
         }
     }
 }
