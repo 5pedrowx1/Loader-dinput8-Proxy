@@ -143,7 +143,7 @@ namespace GTAVModManager.UserControls
             switchUIEnable.ShadowDecoration.CustomizableEdges = customizableEdges2;
             switchUIEnable.Size = new Size(40, 20);
             switchUIEnable.TabIndex = 1;
-            switchUIEnable.Click += OnSettingChanged;
+            switchUIEnable.CheckedChanged += OnSettingChanged;
             // 
             // lblAutoLaunch
             // 
@@ -165,7 +165,7 @@ namespace GTAVModManager.UserControls
             switchAutoLaunch.ShadowDecoration.CustomizableEdges = customizableEdges4;
             switchAutoLaunch.Size = new Size(40, 20);
             switchAutoLaunch.TabIndex = 3;
-            switchAutoLaunch.Click += OnSettingChanged;
+            switchAutoLaunch.CheckedChanged += OnSettingChanged;
             // 
             // lblExecutable
             // 
@@ -194,7 +194,7 @@ namespace GTAVModManager.UserControls
             txtExecutable.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtExecutable.Size = new Size(250, 27);
             txtExecutable.TabIndex = 5;
-            txtExecutable.Click += OnSettingChanged;
+            txtExecutable.TextChanged += OnSettingChanged;
             // 
             // lblScriptHookV
             // 
@@ -216,7 +216,7 @@ namespace GTAVModManager.UserControls
             switchScriptHookV.ShadowDecoration.CustomizableEdges = customizableEdges8;
             switchScriptHookV.Size = new Size(40, 20);
             switchScriptHookV.TabIndex = 7;
-            switchScriptHookV.Click += OnSettingChanged;
+            switchScriptHookV.CheckedChanged += OnSettingChanged;
             // 
             // lblScriptHookVDN
             // 
@@ -238,7 +238,7 @@ namespace GTAVModManager.UserControls
             switchScriptHookVDN.ShadowDecoration.CustomizableEdges = customizableEdges10;
             switchScriptHookVDN.Size = new Size(40, 20);
             switchScriptHookVDN.TabIndex = 9;
-            switchScriptHookVDN.Click += OnSettingChanged;
+            switchScriptHookVDN.CheckedChanged += OnSettingChanged;
             // 
             // lblAutoLoadMods
             // 
@@ -260,7 +260,7 @@ namespace GTAVModManager.UserControls
             switchAutoLoadMods.ShadowDecoration.CustomizableEdges = customizableEdges12;
             switchAutoLoadMods.Size = new Size(40, 20);
             switchAutoLoadMods.TabIndex = 11;
-            switchAutoLoadMods.Click += OnSettingChanged;
+            switchAutoLoadMods.CheckedChanged += OnSettingChanged;
             // 
             // lblAutoLoadScripts
             // 
@@ -282,7 +282,7 @@ namespace GTAVModManager.UserControls
             switchAutoLoadScripts.ShadowDecoration.CustomizableEdges = customizableEdges14;
             switchAutoLoadScripts.Size = new Size(40, 20);
             switchAutoLoadScripts.TabIndex = 13;
-            switchAutoLoadScripts.Click += OnSettingChanged;
+            switchAutoLoadScripts.CheckedChanged += OnSettingChanged;
             // 
             // lblMaxLogEntries
             // 
@@ -311,7 +311,7 @@ namespace GTAVModManager.UserControls
             txtMaxLogEntries.ShadowDecoration.CustomizableEdges = customizableEdges16;
             txtMaxLogEntries.Size = new Size(80, 27);
             txtMaxLogEntries.TabIndex = 15;
-            txtMaxLogEntries.Click += OnSettingChanged;
+            txtMaxLogEntries.TextChanged += OnSettingChanged;
             // 
             // lblVerboseLogging
             // 
@@ -333,7 +333,7 @@ namespace GTAVModManager.UserControls
             switchVerboseLogging.ShadowDecoration.CustomizableEdges = customizableEdges18;
             switchVerboseLogging.Size = new Size(40, 20);
             switchVerboseLogging.TabIndex = 17;
-            switchVerboseLogging.Click += OnSettingChanged;
+            switchVerboseLogging.CheckedChanged += OnSettingChanged;
             // 
             // lblEnableMonitor
             // 
@@ -355,7 +355,7 @@ namespace GTAVModManager.UserControls
             switchEnableMonitor.ShadowDecoration.CustomizableEdges = customizableEdges20;
             switchEnableMonitor.Size = new Size(40, 20);
             switchEnableMonitor.TabIndex = 19;
-            switchEnableMonitor.Click += OnSettingChanged;
+            switchEnableMonitor.CheckedChanged += OnSettingChanged;
             // 
             // lblMonitorInterval
             // 
@@ -384,6 +384,7 @@ namespace GTAVModManager.UserControls
             txtMonitorInterval.ShadowDecoration.CustomizableEdges = customizableEdges22;
             txtMonitorInterval.Size = new Size(80, 27);
             txtMonitorInterval.TabIndex = 21;
+            txtMonitorInterval.TextChanged += OnSettingChanged;
             txtMonitorInterval.Click += OnSettingChanged;
             // 
             // btnSave
@@ -427,6 +428,7 @@ namespace GTAVModManager.UserControls
             Controls.Add(btnReset);
             Name = "SettingsControl";
             Size = new Size(578, 394);
+            Load += SettingsControl_Load;
             panelSettings.ResumeLayout(false);
             panelSettings.PerformLayout();
             ResumeLayout(false);

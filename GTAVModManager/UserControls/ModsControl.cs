@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
-using GTAVModManager.Models;
+﻿using GTAVModManager.Models;
 using GTAVModManager.Services;
+using System.Text.Json;
 
 namespace GTAVModManager.UserControls
 {
@@ -23,39 +23,36 @@ namespace GTAVModManager.UserControls
 
         private void ModsTable_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == modsTable.Columns["colStatus"]?.Index && e.RowIndex >= 0)
+            if (e.RowIndex < 0) return;
+
+            var mod = modsTable.Rows[e.RowIndex].DataBoundItem as ModInfo;
+            if (mod == null) return;
+
+            if (e.ColumnIndex == modsTable.Columns["colStatus"]?.Index)
             {
-                var mod = modsTable.Rows[e.RowIndex].DataBoundItem as ModInfo;
-                if (mod != null)
-                {
-                    e.Value = mod.Loaded ? "✓ Loaded" : "✗ Unloaded";
-                    e.CellStyle.ForeColor = mod.Loaded
-                        ? Color.FromArgb(0, 255, 135)
-                        : Color.FromArgb(255, 77, 77);
-                    e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 9, FontStyle.Bold);
-                }
+                e.Value = mod.Loaded ? "✓ Loaded" : "✗ Unloaded";
+                e.CellStyle.ForeColor = mod.Loaded
+                    ? Color.FromArgb(0, 255, 135)
+                    : Color.FromArgb(255, 77, 77);
+                e.CellStyle.Font = new Font(e.CellStyle.Font?.FontFamily ?? FontFamily.GenericSansSerif, 9, FontStyle.Bold);
             }
 
-            if (e.ColumnIndex == modsTable.Columns["colType"]?.Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == modsTable.Columns["colType"]?.Index)
             {
-                var mod = modsTable.Rows[e.RowIndex].DataBoundItem as ModInfo;
-                if (mod != null)
+                switch (mod.Type.ToLower())
                 {
-                    switch (mod.Type.ToLower())
-                    {
-                        case "scripthook":
-                            e.CellStyle.ForeColor = Color.FromArgb(255, 204, 0);
-                            break;
-                        case "dotnet":
-                            e.CellStyle.ForeColor = Color.FromArgb(0, 204, 255);
-                            break;
-                        case "mod":
-                            e.CellStyle.ForeColor = Color.FromArgb(0, 255, 135);
-                            break;
-                        default:
-                            e.CellStyle.ForeColor = Color.FromArgb(180, 180, 180);
-                            break;
-                    }
+                    case "scripthook":
+                        e.CellStyle.ForeColor = Color.FromArgb(255, 204, 0);
+                        break;
+                    case "dotnet":
+                        e.CellStyle.ForeColor = Color.FromArgb(0, 204, 255);
+                        break;
+                    case "mod":
+                        e.CellStyle.ForeColor = Color.FromArgb(0, 255, 135);
+                        break;
+                    default:
+                        e.CellStyle.ForeColor = Color.FromArgb(180, 180, 180);
+                        break;
                 }
             }
         }
@@ -81,7 +78,7 @@ namespace GTAVModManager.UserControls
             try
             {
                 await _client.ConnectAsync();
-                await RefreshModsList(); 
+                await RefreshModsList();
             }
             catch (Exception ex)
             {
@@ -91,6 +88,11 @@ namespace GTAVModManager.UserControls
         }
 
         private async void RefreshModsList(object? sender, EventArgs e)
+        {
+            await RefreshModsList();
+        }
+
+        private async Task RefreshModsList()
         {
             if (!_client.IsConnected)
             {
@@ -118,7 +120,6 @@ namespace GTAVModManager.UserControls
                     modsTable.DataSource = _currentMods.Mods;
                     lblTotalMods.Text = $"Total: {_currentMods.Count} Mods";
 
-                    // Restaura seleção anterior
                     if (!string.IsNullOrEmpty(selectedModId))
                     {
                         foreach (DataGridViewRow row in modsTable.Rows)
@@ -134,14 +135,8 @@ namespace GTAVModManager.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error refreshing mod list: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Diagnostics.Debug.WriteLine($"Error refreshing mod list: {ex.Message}");
             }
-        }
-
-        private async Task RefreshModsList()
-        {
-            await Task.Run(() => RefreshModsList(null, EventArgs.Empty));
         }
 
         private async void AddMod(object? sender, EventArgs e)

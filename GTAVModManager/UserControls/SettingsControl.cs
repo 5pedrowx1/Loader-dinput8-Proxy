@@ -1,6 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using GTAVModManager.Services;
+using System.Runtime.InteropServices;
 using System.Text;
-using GTAVModManager.Services;
 
 namespace GTAVModManager.UserControls
 {
@@ -26,12 +26,12 @@ namespace GTAVModManager.UserControls
         {
             InitializeComponent();
             _client = new ModLoaderClient();
+            _configPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) ?? string.Empty, "dinput8_config.ini");
+        }
 
-            _configPath = Path.Combine(
-                Path.GetDirectoryName(Application.ExecutablePath) ?? string.Empty,
-                "dinput8_config.ini");
-
-            Load += async (s, e) => await ConnectAndLoadAsync();
+        private async void SettingsControl_Load(object sender, EventArgs e)
+        {
+            await ConnectAndLoadAsync();
         }
 
         private async Task ConnectAndLoadAsync()

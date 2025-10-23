@@ -8,6 +8,8 @@
         {
             if (disposing)
             {
+                _cpuCounter?.Dispose();
+                _ramCounter?.Dispose();
                 _currentProcess?.Dispose();
                 components?.Dispose();
             }

@@ -1,7 +1,7 @@
-﻿using System.Text;
-using System.Text.Json;
-using GTAVModManager.Models;
+﻿using GTAVModManager.Models;
 using GTAVModManager.Services;
+using System.Text;
+using System.Text.Json;
 
 namespace GTAVModManager.UserControls
 {
@@ -10,42 +10,25 @@ namespace GTAVModManager.UserControls
         private readonly ModLoaderClient _client;
         private LogsResponse? _currentLogs;
         private string _filterLevel = "ALL";
-        private System.Windows.Forms.Timer? _refreshTimer;
         private bool _autoScroll = true;
 
         public LogsControl()
         {
             InitializeComponent();
             _client = new ModLoaderClient();
-
-            SetupEventHandlers();
-
-            _refreshTimer = new System.Windows.Forms.Timer { Interval = 1000 };
-            _refreshTimer.Tick += async (s, e) => await RefreshLogs();
-
-            Load += async (s, e) =>
-            {
-                await _client.ConnectAsync();
-                await RefreshLogs();
-                _refreshTimer.Start();
-            };
         }
 
-        private void SetupEventHandlers()
+        private async void LogsControl_Load(object sender, EventArgs e)
         {
-            btnAll.Click += (s, e) => SetFilter("ALL");
-            btnInfo.Click += (s, e) => SetFilter("INFO");
-            btnWarning.Click += (s, e) => SetFilter("WARNING");
-            btnError.Click += (s, e) => SetFilter("ERROR");
-            btnClear.Click += async (s, e) => await ClearLogs();
-            btnExport.Click += async (s, e) => await ExportLogs();
-            txtLogs.MouseWheel += (s, e) => _autoScroll = false;
-            txtLogs.Click += (s, e) => _autoScroll = false;
-            txtLogs.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.End && e.Control)
-                    _autoScroll = true;
-            };
+            await _client.ConnectAsync();
+            await RefreshLogs();
+            _refreshTimer.Start();
+        }
+
+
+        private async void _refreshTimer_Tick(object sender, EventArgs e)
+        {
+            await RefreshLogs();
         }
 
         private void SetFilter(string level)
@@ -287,6 +270,52 @@ namespace GTAVModManager.UserControls
                     btnExport.Text = "Export Logs";
                 }
             }
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            SetFilter("ALL");
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            SetFilter("INFO");
+        }
+
+        private void btnWarning_Click(object sender, EventArgs e)
+        {
+            SetFilter("WARNING");
+        }
+
+        private void btnError_Click(object sender, EventArgs e)
+        {
+            SetFilter("ERROR");
+        }
+
+        private async void btnClear_Click(object sender, EventArgs e)
+        {
+            await ClearLogs();
+        }
+
+        private async void btnExport_Click(object sender, EventArgs e)
+        {
+            await ExportLogs();
+        }
+
+        private void txtLogs_Click(object sender, EventArgs e)
+        {
+            _autoScroll = false;
+        }
+
+        private void txtLogs_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.End && e.Control)
+                _autoScroll = true;
+        }
+
+        private void txtLogs_Scroll(object sender, ScrollEventArgs e)
+        {
+            _autoScroll = true;
         }
     }
 }
