@@ -4,10 +4,16 @@
     {
         private System.ComponentModel.IContainer components = null;
 
+
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-                components.Dispose();
+            if (disposing)
+            {
+                _refreshTimer?.Stop();
+                _refreshTimer?.Dispose();
+                _client?.Dispose();
+                components?.Dispose();
+            }
             base.Dispose(disposing);
         }
 
@@ -34,7 +40,6 @@
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)performanceTable).BeginInit();
             SuspendLayout();
             // 
@@ -110,7 +115,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             performanceTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             performanceTable.ColumnHeadersHeight = 30;
-            performanceTable.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
+            performanceTable.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(24, 24, 24);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -173,33 +178,31 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "Name";
             dataGridViewTextBoxColumn2.HeaderText = "Mod";
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "CallCount";
             dataGridViewTextBoxColumn3.HeaderText = "Calls";
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "AvgExecutionMs";
             dataGridViewTextBoxColumn4.HeaderText = "Avg Time (ms)";
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewTextBoxColumn5.HeaderText = "Peak (ms)";
+            dataGridViewTextBoxColumn5.DataPropertyName = "Type";
+            dataGridViewTextBoxColumn5.HeaderText = "Type";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Errors";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // PerformanceControl
             // 
@@ -234,6 +237,5 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

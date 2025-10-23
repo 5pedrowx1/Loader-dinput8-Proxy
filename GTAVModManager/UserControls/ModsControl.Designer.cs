@@ -6,8 +6,13 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-                components.Dispose();
+            if (disposing)
+            {
+                _refreshTimer?.Stop();
+                _refreshTimer?.Dispose();
+                _client?.Dispose();
+                components?.Dispose();
+            }
             base.Dispose(disposing);
         }
 
@@ -180,26 +185,33 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn1.HeaderText = "Name";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            dataGridViewTextBoxColumn1.Name = "colName";
+            dataGridViewTextBoxColumn1.HeaderText = "Mod Name";
+            dataGridViewTextBoxColumn1.Width = 200;
             dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            dataGridViewTextBoxColumn2.HeaderText = "Status";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.DataPropertyName = "Type";
+            dataGridViewTextBoxColumn2.HeaderText = "Type";
+            dataGridViewTextBoxColumn2.Name = "colType";
+            dataGridViewTextBoxColumn2.Width = 100;
             dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "SizeFormatted";
             dataGridViewTextBoxColumn3.HeaderText = "Size";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Name = "colSize";
+            dataGridViewTextBoxColumn3.Width = 80;
             dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewTextBoxColumn4.HeaderText = "Actions";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.HeaderText = "Status";
+            dataGridViewTextBoxColumn4.Name = "colStatus";
+            dataGridViewTextBoxColumn4.Width = 100;
             dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // ModsControl

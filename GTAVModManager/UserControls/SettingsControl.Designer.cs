@@ -7,10 +7,14 @@ namespace GTAVModManager.UserControls
     {
         private System.ComponentModel.IContainer components = null;
 
+
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-                components.Dispose();
+            if (disposing)
+            {
+                _client?.Dispose();
+                components?.Dispose();
+            }
             base.Dispose(disposing);
         }
 
