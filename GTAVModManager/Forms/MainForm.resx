@@ -117,18 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtLogs.DefaultText" xml:space="preserve">
-    <value>ℹ️ Informações
-
-• Atualização Automática: Atualiza a lista de mods automaticamente
-• Modo Escuro: Tema escuro permanente (recomendado)
-
-📌 Atalhos de Teclado:
-• INSERT: Mostrar/Ocultar interface
-• ESC: Fechar aplicação
-
-⚠️ Aviso:
-Modificar configurações avançadas diretamente no arquivo
-dinput8_config.ini na pasta do jogo.</value>
-  </data>
+  <metadata name="Elipse.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>18, 23</value>
+  </metadata>
+  <metadata name="ShadowForm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>101, 17</value>
+  </metadata>
+  <metadata name="DragForm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>225, 17</value>
+  </metadata>
 </root>

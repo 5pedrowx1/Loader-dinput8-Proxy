@@ -1,4 +1,6 @@
-namespace GTAVModManager.Logics
+using GTAVModManager.Forms;
+
+namespace GTAVModManager
 {
     internal static class Program
     {
@@ -11,7 +13,7 @@ namespace GTAVModManager.Logics
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new GTAVModManager.Forms.GTAVModManager());
+            Application.Run(new MainForm());
         }
     }
 }
