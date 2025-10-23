@@ -76,5 +76,29 @@ namespace GTAVModManager.Forms
         {
             ShowControl(4);
         }
+
+        private async void BtnMinimize_Click(object sender, EventArgs e)
+        {
+            var originalSize = this.Size;
+            var originalLocation = this.Location;
+
+            for (int step = 0; step < 6; step++)
+            {
+                this.Size = new Size(this.Width - 20, this.Height - 10);
+                this.Location = new Point(this.Location.X + 10, this.Location.Y + 5);
+                this.Opacity -= 0.1;
+                await Task.Delay(20);
+            }
+
+            WindowState = FormWindowState.Minimized;
+            this.Size = originalSize;
+            this.Location = originalLocation;
+            this.Opacity = 1;
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
