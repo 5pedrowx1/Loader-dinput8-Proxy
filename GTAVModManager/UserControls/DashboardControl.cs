@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using System.Text.Json;
-using Microsoft.VisualBasic.Devices;
-using GTAVModManager.Models;
+﻿using GTAVModManager.Models;
 using GTAVModManager.Services;
+using Microsoft.VisualBasic.Devices;
+using System.Diagnostics;
+using System.Text.Json;
 
 namespace GTAVModManager.UserControls
 {
@@ -13,14 +13,10 @@ namespace GTAVModManager.UserControls
         private PerformanceInfo? _currentPerformance;
         private readonly ComputerInfo _computerInfo = new ComputerInfo();
         private readonly Process _currentProcess;
-
-        // Para cálculo preciso de CPU
+        private PerformanceCounter? _cpuCounter;
+        private PerformanceCounter? _ramCounter;
         private DateTime _lastCpuCheck = DateTime.UtcNow;
-        private TimeSpan _lastTotalProcessorTime = TimeSpan.Zero;
-        private double _currentCpuUsage = 0;
-
-        // Para FPS da UI
-        private Stopwatch _fpsStopwatch = new Stopwatch();
+        private readonly Stopwatch _fpsStopwatch = new Stopwatch();
         private int _frameCount = 0;
         private double _lastFps = 0;
         private bool _isInitialized = false;
@@ -37,13 +33,27 @@ namespace GTAVModManager.UserControls
             if (_isInitialized) return;
             _isInitialized = true;
 
-            // Inicializar primeira leitura de CPU
-            _lastTotalProcessorTime = _currentProcess.TotalProcessorTime;
-            _lastCpuCheck = DateTime.UtcNow;
-
+            InitializePerformanceCounters();
             await ConnectToLoader();
             updateTimer.Start();
             _fpsStopwatch.Start();
+        }
+
+        private void InitializePerformanceCounters()
+        {
+            try
+            {
+                _cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+                _ramCounter = new PerformanceCounter("Memory", "Available MBytes");
+                _cpuCounter.NextValue();
+                _ramCounter.NextValue();
+                _lastCpuCheck = DateTime.UtcNow;
+                Debug.WriteLine("PerformanceCounters inicializados com sucesso");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Erro ao inicializar PerformanceCounter: {ex.Message}");
+            }
         }
 
         private async Task ConnectToLoader()
@@ -99,7 +109,6 @@ namespace GTAVModManager.UserControls
 
             try
             {
-                // Buscar status do loader
                 var statusJson = await _client.GetStatusAsync();
                 if (!string.IsNullOrEmpty(statusJson))
                 {
@@ -107,14 +116,12 @@ namespace GTAVModManager.UserControls
                     UpdateStatusDisplay();
                 }
 
-                // Buscar performance do loader
                 var perfJson = await _client.GetPerformanceAsync();
                 if (!string.IsNullOrEmpty(perfJson))
                 {
                     _currentPerformance = JsonSerializer.Deserialize<PerformanceInfo>(perfJson);
                 }
 
-                // Atualizar displays com dados reais do sistema
                 UpdatePerformanceDisplay();
                 UpdateConnectionStatus(true);
             }
@@ -163,11 +170,8 @@ namespace GTAVModManager.UserControls
                 return;
             }
 
-            // Obter estatísticas reais do sistema
             float cpuUsage = GetSystemCpuUsage();
             double usedMemoryMb = GetSystemMemoryUsage();
-
-            // Atualizar displays
             UpdateCpuDisplay(cpuUsage);
             UpdateRamDisplay(usedMemoryMb);
             UpdateFPSCounter();
@@ -175,66 +179,61 @@ namespace GTAVModManager.UserControls
 
         private float GetSystemCpuUsage()
         {
+            if (_cpuCounter == null)
+            {
+                Debug.WriteLine("CPU Counter não disponível");
+                return 0f;
+            }
+
             try
             {
-                // Calcular CPU usage total do sistema usando PerformanceCounter
-                using (var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total"))
-                {
-                    // Primeira leitura sempre retorna 0, então fazemos duas
-                    cpuCounter.NextValue();
-                    System.Threading.Thread.Sleep(100); // Pequena pausa para medição
-                    float cpuUsage = cpuCounter.NextValue();
+                var timeSinceLastCheck = (DateTime.UtcNow - _lastCpuCheck).TotalMilliseconds;
 
-                    return Math.Min(100f, Math.Max(0f, cpuUsage));
+                if (timeSinceLastCheck < 100)
+                {
+                    return _cpuCounter.NextValue();
                 }
+
+                _lastCpuCheck = DateTime.UtcNow;
+                float cpuUsage = _cpuCounter.NextValue();
+                return Math.Min(100f, Math.Max(0f, cpuUsage));
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Erro ao ler CPU (método 1): {ex.Message}");
-
-                // Fallback: usar método alternativo baseado no processo
-                try
-                {
-                    var currentTime = DateTime.UtcNow;
-                    var currentTotalProcessorTime = _currentProcess.TotalProcessorTime;
-
-                    var cpuUsedMs = (currentTotalProcessorTime - _lastTotalProcessorTime).TotalMilliseconds;
-                    var totalMsPassed = (currentTime - _lastCpuCheck).TotalMilliseconds;
-                    var cpuUsageTotal = cpuUsedMs / (Environment.ProcessorCount * totalMsPassed);
-
-                    _currentCpuUsage = cpuUsageTotal * 100;
-                    _lastCpuCheck = currentTime;
-                    _lastTotalProcessorTime = currentTotalProcessorTime;
-
-                    return (float)Math.Min(100.0, Math.Max(0.0, _currentCpuUsage));
-                }
-                catch (Exception ex2)
-                {
-                    Debug.WriteLine($"Erro ao ler CPU (método 2): {ex2.Message}");
-                    return 0f;
-                }
+                Debug.WriteLine($"Erro ao ler CPU: {ex.Message}");
+                return 0f;
             }
         }
 
         private double GetSystemMemoryUsage()
         {
+            if (_ramCounter == null)
+            {
+                Debug.WriteLine("RAM Counter não disponível");
+                try
+                {
+                    double totalMB = _computerInfo.TotalPhysicalMemory / (1024.0 * 1024.0);
+                    double availableMB = _computerInfo.AvailablePhysicalMemory / (1024.0 * 1024.0);
+                    return Math.Max(0, totalMB - availableMB);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Erro ao ler RAM via ComputerInfo: {ex.Message}");
+                    return 0;
+                }
+            }
+
             try
             {
-                // Obter memória disponível usando PerformanceCounter
-                using (var ramCounter = new PerformanceCounter("Memory", "Available MBytes"))
-                {
-                    double availableMB = ramCounter.NextValue();
-                    double totalMB = _computerInfo.TotalPhysicalMemory / (1024.0 * 1024.0);
-                    double usedMB = totalMB - availableMB;
+                double totalMB = _computerInfo.TotalPhysicalMemory / (1024.0 * 1024.0);
+                double availableMB = _ramCounter.NextValue();
+                double usedMB = totalMB - availableMB;
 
-                    return Math.Max(0, usedMB);
-                }
+                return Math.Max(0, usedMB);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Erro ao ler RAM: {ex.Message}");
-
-                // Fallback: usar apenas o total menos o disponível reportado pelo sistema
                 try
                 {
                     double totalMB = _computerInfo.TotalPhysicalMemory / (1024.0 * 1024.0);

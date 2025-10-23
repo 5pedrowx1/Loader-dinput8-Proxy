@@ -10,6 +10,7 @@
                 _refreshTimer?.Stop();
                 _refreshTimer?.Dispose();
                 _client?.Dispose();
+                components?.Dispose();
             }
             base.Dispose(disposing);
         }

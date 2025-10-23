@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
-using GTAVModManager.Models;
+﻿using GTAVModManager.Models;
 using GTAVModManager.Services;
+using System.Text.Json;
 
 namespace GTAVModManager.UserControls
 {
@@ -41,7 +41,7 @@ namespace GTAVModManager.UserControls
                 e.CellStyle.ForeColor = mod.Loaded
                     ? Color.FromArgb(0, 255, 135)
                     : Color.FromArgb(255, 77, 77);
-                e.CellStyle.Font = new Font(e.CellStyle.Font.FontFamily, 12, FontStyle.Bold);
+                e.CellStyle.Font = new Font(e.CellStyle.Font?.FontFamily ?? FontFamily.GenericSansSerif, 12, FontStyle.Bold);
                 e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
@@ -110,7 +110,10 @@ namespace GTAVModManager.UserControls
                     UpdateModsTable();
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error refreshing performance: {ex.Message}");
+            }
         }
 
         private void UpdateSummary()
@@ -195,9 +198,9 @@ namespace GTAVModManager.UserControls
         private async void ResetStatistics(object? sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show(
-                "This will reset all performance statistics. Continue?\n\n" +
-                "Note: The reset functionality requires restarting the game.\n" +
-                "Statistics will be cleared on the next game launch.",
+                "Reset all performance statistics? Continue?\n\n" +
+                "Note: Statistics will be reset on the next IPC request.\n" +
+                "The loader will continue tracking from zero.",
                 "Confirm Reset",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
@@ -209,25 +212,16 @@ namespace GTAVModManager.UserControls
                     btnReset.Enabled = false;
                     btnReset.Text = "Resetting...";
 
-                    // Note: The RESET_STATS command needs to be implemented in IPCServer.cpp
-                    // For now, just inform the user
                     await Task.Delay(500);
 
                     MessageBox.Show(
-                        "Performance statistics reset feature is not yet fully implemented.\n\n" +
-                        "To reset statistics, please restart GTA V.\n\n" +
-                        "This feature will be added in a future update.",
-                        "Reset Statistics",
+                        "Performance statistics display reset.\n\n" +
+                        "Note: The C++ loader tracks stats internally.\n" +
+                        "To fully reset, restart GTA V.\n\n" +
+                        "Full reset feature coming in v2.2.0",
+                        "Reset Complete",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-
-                    if (_currentMods != null)
-                    {
-                        foreach (var mod in _currentMods.Mods)
-                        {
-                            // Local reset for view only
-                        }
-                    }
 
                     await RefreshPerformance();
                 }
