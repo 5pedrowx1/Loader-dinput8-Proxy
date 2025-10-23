@@ -182,7 +182,7 @@ start "GTA V Loader.sln"
 msbuild "GTA V Loader.sln" /p:Configuration=Release /p:Platform=x64
 ```
 
-**Project structure (high-level)**
+**Project structure**
 
 ```
 GTA V Loader/
@@ -222,7 +222,7 @@ using (var client = new NamedPipeClientStream(".", "GTAVModLoader", PipeDirectio
 }
 ```
 
-**IPC Message structure (client/server must match)**
+**IPC Message structure**
 ```cpp
 #pragma pack(push, 1)
 struct IPCMessage {
